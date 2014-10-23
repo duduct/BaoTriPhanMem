@@ -1,0 +1,148 @@
+li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	body{
+		position: relative;
+	}
+		header{
+			height: 325px;
+			width: 100%;
+			background-color: white;
+		}
+		footer{
+			position: relative;
+			height: 325px;
+			width: 100%;
+			background: -webkit-gradient(linear, left top, left bottom, from(#010acc), to(#000115));
+			background: -moz-linear-gradient(top,#000115,#010acc);
+			background: -ms-linear-gradient(top,#000115,#010acc);
+		}
+		#form{
+			position: absolute;
+			height: 200px;
+			width: 330px;
+			top:160px;
+			left: 480px;
+			background:rgba(30,30,30,0.94);
+			box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+			border-radius: 8px;
+			z-index: 100;
+			fon
+		}
+		#form li p{
+			color: white;
+			font-family:"Lucida Grande", Helvetica, Verdana, Arial;
+			margin: 5px 0px 5px 0px;
+		}
+		#form li:nth-child(3){
+			margin-top: 30px;
+		}
+		#form li input{
+			border:none;
+			height: 20px;
+			width: 250px;
+		}
+		#form li input[type="submit"]{
+			width: 75px;
+			display: block;
+			right: 40px;
+			position: absolute;
+			bottom: 5px;
+			height: 25px;
+			cursor: pointer;
+			border-radius: 3px;
+			color: white;
+			background: -webkit-gradient(linear, left top, left bottom, from(#010acc), to(#000115));
+			background: -moz-linear-gradient(top,#010acc,#000115);
+			background: -ms-linear-gradient(top,#010acc,#000115);
+		}
+		#form ul p:first-child{
+		}
+
+
+		#change_pass{
+			position: absolute;
+			height: 350px;
+			width: 330px;
+			top:160px;
+			left: 480px;
+			background:rgba(30,30,30,0.94);
+			box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+			border-radius: 8px;
+			z-index: 100;
+			fon
+		}
+		#change_pass li p{
+			color: white;
+			font-family:"Lucida Grande", Helvetica, Verdana, Arial;
+			margin: 5px 0px 5px 0px;
+		}
+		#change_pass li p{
+			margin-top: 15px;
+		}
+		#change_pass li input{
+			border:none;
+			height: 20px;
+			width: 250px;
+		}
+		#change_pass li input[type="submit"]{
+			width: 75px;
+			display: block;
+			right: 40px;
+			position: absolute;
+			bottom: 5px;
+			height: 25px;
+			cursor: pointer;
+			border-radius: 3px;
+			color: white;
+			background: -webkit-gradient(linear, left top, left bottom, from(#010acc), to(#000115));
+			background: -moz-linear-gradient(top,#010acc,#000115);
+			background: -ms-linear-gradient(top,#010acc,#000115);
+		}
+		#change_pass ul p:first-child{
+		}
+		#slogen{
+			position: absolute;
+			left: 520px;
+			bottom:110px;
+		}
+		#slogen p{
+			
+			color: white;
+			font-family:"Lucida Grande", Helvetica, Verdana, Arial;
+
+		}
+		#logo{
+			width: 260px;
+			height: 82px;
+			background:url(../img/logo.png) top left no-repeat;
+			position: absolute;
+			top: 65px;
+			left: 505px;
+		}
+		#home{
+			display: block;
+			height: 25px;
+			text-align: center;
+			width: 65px;
+			font-size: 14px;
+			background: -webkit-gradient(linear, left top, left bottom, from(#010acc), to(#000115));
+			background: -moz-linear-gradient(left top, left bottom, from(#010acc), to(#000115));
+			background: -ms-linear-gradient(left top, left bottom, from(#010acc), to(#000115));
+			line-height: 25px;
+			color: white;
+			border-radius: 3px;
+			font-family:"Lucida Grande", Helvetica, Verdana, Arial;
+			position: absolute;
+			bottom: 5px;
+			left: 40px;
+
+		}
+ .error p{
+ 	margin-top: 5px;
+ 	color: red;
+ 	font-size: 13px;
+}
