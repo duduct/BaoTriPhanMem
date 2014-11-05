@@ -86,7 +86,7 @@ class Md_timkiem extends CI_Model {
 		$this->db->where('tram.MATRAM', $value);
 		$this->db->from('mba');
 		$this->db->join('chitiet_qtsd', 'chitiet_qtsd.SONO = mba.SONO');
-		$this->db->join('tram', 'chitiet_qtsd.MATRAM = tram.MATRAM');			
+		$this->db->join('tram', 'chitiet_qtsd.MATRAM = tram.MATRAM');
 		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
 		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
 		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
@@ -199,6 +199,31 @@ class Md_timkiem extends CI_Model {
 		$this->db->join('tram', 'chitiet_qtsd.MATRAM = tram.MATRAM');		
 		$query = $this->db->get();
 		return $query->result_array();
+	}
+
+	public function search($soNO, $maDv, $maTram, $maTinhTrang, $congSuat) {
+		$this->db->select("*");
+		$this->db->from('mba');
+		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
+		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
+
+		$this->db->join('chitiet_qtsd', 'chitiet_qtsd.SONO = mba.SONO');
+		$this->db->join('tram', 'chitiet_qtsd.MATRAM = tram.MATRAM');
+
+		$this->db->join('chitiet_tinhtrang', 'mba.SONO = chitiet_tinhtrang.SONO');
+		$this->db->join('tinhtrang_mba', 'chitiet_tinhtrang.MA_TT = tinhtrang_mba.MA_TT');
+
+		$this->db->join('nhasanxuat', 'mba.MA_HSX = nhasanxuat.MA_HSX');
+
+		$soNO = trim($soNO);
+		if ($soNO != '' && !empty($soNO)) $this->db->where('mba.SONO', $soNO);
+		if ($maDv != 'all') $this->db->where('mba.MA_DV', $maDv);
+		if ($maTram != 'all') $this->db->where('tram.MATRAM', $maTram);
+		if ($maTinhTrang != 'all') $this->db->where('tinhtrang_mba.MA_TT', $maTinhTrang);
+		if ($congSuat != '' && !empty($congSuat)) $this->db->where('mba.congSuat', $congSuat);
+		$query = $this->db->get();
+		$result = $query->result_array();
+		return $result;
 	}
 
 }

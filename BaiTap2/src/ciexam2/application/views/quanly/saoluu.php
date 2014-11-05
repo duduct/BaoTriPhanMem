@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
-<link rel="stylesheet" href="<?php echo base_url();?>template/style/member.css">
+<?php $this->load->view('layout/library.php'); ?>
 <script type="text/javascript" src="<?php echo base_url();?>template/javascript/jquery-2.0.3.min.js"></script>
 <script type="text/javascript">
 	$("document").ready(function(){
@@ -55,16 +55,17 @@
 
 <body>
 		<?php $this->load->view('layout/header'); ?>
-		<article>
-			<div id="left-menu">
-				
-
-			</div><!--End left-menu-->
-			<div id="content">
-            	<table id="saoluu" width="550" border="0" cellspacing="1">
+		<div class="container">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<a href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup"><img id="anh1" src="<?php echo base_url();?>template/images/2.jpg" onmouseover="doihinh1();" onmouseout="doihinh2();"/></a>	
+			</div><!--End col 6-->
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<a href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup" id="sluu">Tạo sao lưu toàn bộ dữ liệu.</a>
+			</div><!--End col 6-->
+			<table id="saoluu" width="550" border="0" cellspacing="1">
                   <tr>
-                    <td><a href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup"><img id="anh1" src="<?php echo base_url();?>template/images/2.jpg" onmouseover="doihinh1();" onmouseout="doihinh2();"/></a></td>
-                    <td><a href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup" id="sluu">Tạo sao lưu toàn bộ dữ liệu.</a></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td><img id="anh2" src="<?php echo base_url();?>template/images/1.jpg" onmouseover="doihinh3();" onmouseout="doihinh4();"/></td>
@@ -76,12 +77,7 @@
                     </td>
                   </tr>
                 </table>
-
-			</div><!--End content-->
-			<div class="clear">
-
-			</div><!--End clear-->
-		</article>
+		</div>
 		<?php $this->load->view('layout/footer'); ?>
 	</body>
 </html>

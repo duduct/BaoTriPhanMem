@@ -3,15 +3,8 @@
 	<head>
 			<meta charset="utf-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<title></title>
-			<link rel="stylesheet" href="<?php echo base_url();?>template/style/member.css">
-			<style type="text/css">
-			.display{
-				display: none;
-
-			}
-			</style>
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+			<title>Báo cáo</title>
+			<?php $this->load->view('layout/library.php'); ?>
 			<script type="text/javascript">
 			jQuery(document).ready(function($) {
 						$('#result_tk1 tr:even').css({

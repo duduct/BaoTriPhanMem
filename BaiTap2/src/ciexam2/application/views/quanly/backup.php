@@ -52,18 +52,18 @@ function backup_tables($tables = 'chitiet_daitu,chitiet_qtsd,chitiet_tinhtrang,d
       while($row = mysql_fetch_row($result)){
         //code them vao
         $return.= 'INSERT INTO '.$table.' VALUES(';
-        for($j=0; $j<$num_fields; $j++){
-          $row[$j] = addslashes($row[$j]);
-          $row[$j] = str_replace("\n","\\n",$row[$j]);
-          if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
-          if ($j<($num_fields-1)) { $return.= ','; }
-        }
-        $return.= ");\n";
-      }
-    }
-    $return.="\n\n\n";
-    
-  }
+          for($j=0; $j<$num_fields; $j++){
+            $row[$j] = addslashes($row[$j]);
+            $row[$j] = str_replace("\n","\\n",$row[$j]);
+            if (isset($row[$j])) { $return.= '"'.$row[$j].'"' ; } else { $return.= '""'; }
+            if ($j<($num_fields-1)) { $return.= ','; }
+          }
+          $return.= ");\n";
+}
+}
+$return.="\n\n\n";
+
+}
   //thay thế "" = "NULL" tuỳ các bạn
   //$return=str_replace("\"\"","\"\"",$return);//tuỳ 
   $return.=$add_foregn;//them quan he

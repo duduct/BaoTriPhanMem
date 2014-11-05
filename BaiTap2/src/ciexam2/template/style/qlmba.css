@@ -1,0 +1,16 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+body {
+  padding-top: 70px;
+}
+footer,
+.footer {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  background-color: #f5f5f5;
+  font-size: 12px;
+}
+footer dl,
+.footer dl {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

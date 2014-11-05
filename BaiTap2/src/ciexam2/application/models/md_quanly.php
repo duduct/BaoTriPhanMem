@@ -124,6 +124,12 @@ class Md_quanly extends CI_Model {
 			return true;
 		}
 	}
+
+	/*GET ALL TINH TRANG*/
+	public function getTinhTrang() {
+		$query = $this->db->get('TINHTRANG_MBA');
+		return $query->result_array();
+	}
 }
 
 /* End of file md_quanly.php */
