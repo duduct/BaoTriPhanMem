@@ -158,5 +158,52 @@ class Md_capnhat extends CI_Model
 			$query = $this->db->get();
 			return $query->result_array();
 		}
- }
+
+	public function checkMSTS($ms){
+		$this->db->where("MSTS",$ms);
+		$query=$this->db->get("mba");
+		if($query->num_rows() > 0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+	public function check_date_tt($ma_tt,$so_no,$ngay_xet){
+		$this->db->where("MA_TT",$ma_tt);
+		$this->db->where("SONO",$so_no);
+		$this->db->where("NGAYXET_TT",$ngay_xet);
+		$query=$this->db->get("chitiet_tinhtrang");
+		if($query->num_rows() > 0){
+			return false;
+		}else{
+			return true;
+		}
+	}
+
+
+	public function checkMSTS_CapNhat($msts,$sono){
+		//Xet MSTS voi SONO tuong ung giong hay khac 
+		$this->db->where("SONO",$sono);
+		$this->db->where("MSTS !=",$msts);
+		$query=$this->db->get("mba");
+		// Neu khac thi xet xem no co trung voi MSTS nao trong CSDL ko
+		if($query->num_rows() > 0){
+			$this->db->where("MSTS",$msts);
+			$query=$this->db->get("mba");
+			// Neu trung thi return false
+			if($query->num_rows() > 0){
+				return false;
+			}else{
+				return true;
+			}
+		//Neu MSTS voi SONO tuong ung ma giong nhau 	
+		}else{
+			return true;
+		}
+
+	}
+	
+}
+
 ?>

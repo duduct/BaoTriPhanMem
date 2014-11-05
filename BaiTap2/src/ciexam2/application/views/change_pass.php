@@ -12,11 +12,11 @@
     
       <div class="form-group">
         <label for="">Tên đăng nhập</label>
-        <input type="text" class='form-control' size="20" id="username" name="username" value="<?php echo $this->session->userdata('logged_in')['username'] ?>" />
+        <input type="text" class='form-control' size="20" id="username" name="username" value="<?php echo $this->session->userdata('logged_in')['username'] ?>" disabled/>
         <?php echo form_error('username'); ?>
       </div>
     <div class="form-group">
-        <label for="">Mật khẩu:</label>
+        <label for="">Mật khẩu cũ:</label>
         <input type="password" class='form-control' size="20" id="password" name="password"/>
         <?php echo form_error('password'); ?>
     </div>

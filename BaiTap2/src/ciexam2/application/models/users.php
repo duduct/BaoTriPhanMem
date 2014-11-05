@@ -32,40 +32,30 @@ class Users extends CI_Model {
 	  } else
 	   return false;
 	 }
-	 function Change_password($pass_new)
-        {   
+	function Change_password($pass_new){
+		$data = array(
+            'MATKHAU' => md5($pass_new)
+        );   
         $this->db->select('MA_DV');
         $this->db->where('TAIKHOAN',$this->session->userdata('logged_in')['username']);
-        $this->db->where('MATKHAU',$this->session->userdata('logged_in')['password']);
-        $query=$this->db->get('donvi');   
-
-        if ($query->num_rows() > 0)
-         {
-                $row = $query->row();
-                if($row->MA_DV==$this->session->userdata('logged_in')['ma_dv'])
-                {
-                	
-                    $data = array(
-                      'MATKHAU' => md5($pass_new)
-                     );
-                  $this->db->where('TAIKHOAN',$this->session->userdata('logged_in')['username']);
-                  $this->db->where('MATKHAU',$this->session->userdata('logged_in')['password']);
-                       if($this->db->update('donvi', $data)) 
-                       {
-                       return true;
-                       }else{
-                        return false;
-                       }
-                }else{
-                return false;
-                }
-
-
-         }else{
-            return false;
-         }
-
+        $query=$this->db->get('donvi');
+        if($query->num_rows() > 0){
+        	$this->db->update('donvi' ,$data);
+        	return true; 
         }
+ 		  return false;
+    }
+
+    public function check_MK($pass_old){
+        $this->db->where('TAIKHOAN',$this->session->userdata('logged_in')['username']);
+        $this->db->where('MATKHAU',md5($pass_old));
+        $query=$this->db->get('donvi'); 
+        if($query->num_rows() > 0){
+        	return true;
+        }  
+        return false;
+    }
+
 	
 }
 
