@@ -125,11 +125,42 @@ td select {
   top: 31px;
 }
 #left-menu {
-  height: 516px;
-  width: 20%;
-  background-color: #5A5858;
-  float: left;
-  position: relative;
+  margin-bottom: 20px;
+}
+#left-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#left-menu a {
+  text-decoration: none;
+  padding: 0px 10px;
+  line-height: 24px;
+  display: block;
+}
+#left-menu > ul > li > a {
+  color: #bbb;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+#left-menu > ul > li > div {
+  margin: 0;
+  margin-left: 20px;
+}
+#left-menu > ul > li > div ul {
+  padding: 0;
+}
+#left-menu > ul > li > div ul li a {
+  color: #000;
+  border: 0;
+}
+#left-menu > ul > li > div ul li a:hover {
+  background: #eee;
+}
+#left-menu > ul > li > div ul li.active a {
+  border-left-color: #1d9ce5;
+  color: #1d9ce5;
 }
 #title-submenu {
   background: -webkit-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
@@ -165,30 +196,6 @@ td select {
   /*For IE10*/
   background: -moz-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
   cursor: pointer;
-}
-#left-menu ul li {
-  list-style: none;
-}
-#left-menu ul li:hover a {
-  background: -webkit-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
-  background: -moz-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
-  background: -ms-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
-}
-#left-menu ul li:hover ul li a {
-  background: transparent;
-}
-#left-menu ul li ul li:hover a {
-  background: -webkit-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
-  background: -moz-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
-  background: -ms-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);
-}
-#left-menu ul li a {
-  color: white;
-  font-size: 13px;
-  font-family: Ubuntu, Helvetica, sans-serif;
-  text-decoration: none;
-  display: block;
-  padding: 3px 10px;
 }
 .left_bg {
   background: -webkit-linear-gradient(top, #949292 0%, #6d6b6b 87%, #282828 99%);

@@ -55,29 +55,21 @@
 
 <body>
 		<?php $this->load->view('layout/header'); ?>
-		<div class="container">
+		<div class="container" style="height: 500px;">
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<a href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup"><img id="anh1" src="<?php echo base_url();?>template/images/2.jpg" onmouseover="doihinh1();" onmouseout="doihinh2();"/></a>	
+				<a class='btn btn-success btn-lg btn-block' href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup" id="sluu"><span style="display: block; font-size: 50px;" class="glyphicon glyphicon-export"></span>Tạo sao lưu toàn bộ dữ liệu.</a>
 			</div><!--End col 6-->
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<a href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup" id="sluu">Tạo sao lưu toàn bộ dữ liệu.</a>
+					<form class='btn btn-danger btn-lg btn-block' enctype="multipart/form-data" action="<?php echo base_url();?>index.php/saoluu_phuchoi/restore" method="post">
+							<span style="display: block; font-size: 50px;" class="glyphicon glyphicon-import"></span>
+                            <input name="namefile" type="file" style="float: left;"/>
+                            <input type="submit" class='btn btn-xs' style="color: red; background: white; padding: 2px 8px;" value="Khôi phục dữ liệu" style="float: left"/>
+                            <div class="clearfix">
+                            
+                            </div>
+                    </form>
 			</div><!--End col 6-->
-			<table id="saoluu" width="550" border="0" cellspacing="1">
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><img id="anh2" src="<?php echo base_url();?>template/images/1.jpg" onmouseover="doihinh3();" onmouseout="doihinh4();"/></td>
-                    <td><p id="phhoi">Khôi phục lại toàn bộ dữ liệu.</p><br/>
-                        <form style="display:none;" id="form1" enctype="multipart/form-data" action="<?php echo base_url();?>index.php/saoluu_phuchoi/restore" method="post">
-                            <input name="namefile" type="file" />
-                            <input type="submit" value="Phục hồi" />
-                        </form>
-                    </td>
-                  </tr>
-                </table>
-		</div>
+		</div><!--End container-->
 		<?php $this->load->view('layout/footer'); ?>
 	</body>
 </html>

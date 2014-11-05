@@ -49,8 +49,8 @@
 				</ul>
 			</li>
 			<li><a href="<?php echo base_url(); ?>timkiem" >Tìm kiếm</a></li>
-			<li><a href="<?php echo base_url(); ?>baocao" >Báo cáo</a></li>
-			<li><a href="<?php echo base_url(); ?>thongke" >Thống kê</a></li>
+			<li><a href="<?php echo base_url(); ?>baocao/tatca" >Báo cáo</a></li>
+			<li><a href="<?php echo base_url(); ?>thongke/tatca" >Thống kê</a></li>
 			<li><a href="<?php echo base_url(); ?>saoluu_phuchoi" >Sao lưu</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">

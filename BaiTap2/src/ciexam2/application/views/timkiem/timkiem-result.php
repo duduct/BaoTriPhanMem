@@ -19,10 +19,10 @@
 	</thead>
 	<tbody>
 
-	<?php $i = 1?>
+	<?php $i = 0?>
 	<?php foreach ($results as $result): ?>
 		<tr>
-			<td><?php echo $i++; ?></td>
+			<td><?php echo ++$i ?></td>
 			<td><?php echo $result['SONO'] ?></td>
 			<td><?php echo $result['TEN_MBA'] ?></td>
 			<td><?php echo $result['TEN_DV'] ?></td>
@@ -38,5 +38,9 @@
 			<td><?php echo $result['DIENAP'] ?></td>					
 		</tr>
 	<?php endforeach ?>
+	<?php
+		if ($i == 0)
+			echo "<tr><td colspan='14'>Không có máy biến áp phù hợp!</td></tr>";
+	?>
 	</tbody>
 </table>
