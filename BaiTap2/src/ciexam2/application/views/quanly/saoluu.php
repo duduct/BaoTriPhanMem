@@ -56,10 +56,10 @@
 <body>
 		<?php $this->load->view('layout/header'); ?>
 		<div class="container" style="height: 500px;">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-bottom: 10px;">
 				<a class='btn btn-success btn-lg btn-block' href="<?php echo base_url();?>index.php/saoluu_phuchoi/backup" id="sluu"><span style="display: block; font-size: 50px;" class="glyphicon glyphicon-export"></span>Tạo sao lưu toàn bộ dữ liệu.</a>
 			</div><!--End col 6-->
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<form class='btn btn-danger btn-lg btn-block' enctype="multipart/form-data" action="<?php echo base_url();?>index.php/saoluu_phuchoi/restore" method="post">
 							<span style="display: block; font-size: 50px;" class="glyphicon glyphicon-import"></span>
                             <input name="namefile" type="file" style="float: left;"/>

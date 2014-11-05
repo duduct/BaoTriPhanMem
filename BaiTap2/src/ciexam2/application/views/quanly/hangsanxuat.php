@@ -52,7 +52,7 @@
       }
       ?>
     </ul><!--End navigation-->
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
       <?php echo form_open('quanly/hangsanxuat'); ?>
       <legend>Thông tin cập nhật</legend>
       <div id="nhap-tthsx">
@@ -83,7 +83,7 @@
         <?php form_close(); ?>
       </div> 
     </div><!--End col 4 -->
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
       <legend>Thông tin các nhà sản xuất </legend>
       <table id="ketquahsx" class="table table-hover table-striped table-bordered">
         <thead>

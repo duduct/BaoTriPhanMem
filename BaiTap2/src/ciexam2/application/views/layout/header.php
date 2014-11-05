@@ -30,37 +30,49 @@
 	</script>
 	<!--Navigation -->
 	<nav class="navbar navbar-default navbar-fixed-top">
-		<a class="navbar-brand" href="<?php echo base_url();?>login"><img src="<?php echo base_url();?>template/images/logo.png" alt="Công ty điện lực Cà Mau" style="height: 40px; witdh: auto; margin: -10px;"></a>
-		<a class="navbar-brand" href="javascript:void(0)">Công Ty Điện Lực Cà Mau</a>
-		<ul class="nav navbar-nav">
-			<li class='dropdown'>
-				<a href="" class="dropdown-toggle" data-toggle="dropdown">Quản lý <span class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="<?php echo base_url(); ?>quanly/donvi">Đơn vị</a></li>
-					<li><a href="<?php echo base_url(); ?>quanly/tram">Trạm</a></li>
-					<li><a href="<?php echo base_url(); ?>quanly/hangsanxuat">Hãng sản xuất</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="" class="dropdown-toggle" data-toggle="dropdown">Cập nhật  <span class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="<?php echo base_url(); ?>capnhat/capnhatmba">Máy biến áp</a></li>
-					<li><a href="<?php echo base_url(); ?>capnhat/tinhtrang">Tình trạng máy biến áp</a></li>
-				</ul>
-			</li>
-			<li><a href="<?php echo base_url(); ?>timkiem" >Tìm kiếm</a></li>
-			<li><a href="<?php echo base_url(); ?>baocao/tatca" >Báo cáo</a></li>
-			<li><a href="<?php echo base_url(); ?>thongke/tatca" >Thống kê</a></li>
-			<li><a href="<?php echo base_url(); ?>saoluu_phuchoi" >Sao lưu</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['name'];?> <span class="caret"></span></a>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="<?php echo base_url(); ?>change_pass">Đổi mật khẩu</a></li>
-					<li><a href="<?php echo base_url(); ?>home/logout">Đăng xuất</a></li>
-				</ul>
-			</li>
-		</ul>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo base_url();?>login"><img src="<?php echo base_url();?>template/images/logo.png" alt="Công ty điện lực Cà Mau" style="height: 40px; witdh: auto; margin: -10px;"></a>
+			<a class="navbar-brand" href="javascript:void(0)">Công Ty Điện Lực Cà Mau</a>
+		</div><!--End brand-->
+		
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li class='dropdown'>
+					<a href="" class="dropdown-toggle" data-toggle="dropdown">Quản lý <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="<?php echo base_url(); ?>quanly/donvi">Đơn vị</a></li>
+						<li><a href="<?php echo base_url(); ?>quanly/tram">Trạm</a></li>
+						<li><a href="<?php echo base_url(); ?>quanly/hangsanxuat">Hãng sản xuất</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown">Cập nhật  <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="<?php echo base_url(); ?>capnhat/capnhatmba">Máy biến áp</a></li>
+						<li><a href="<?php echo base_url(); ?>capnhat/tinhtrang">Tình trạng máy biến áp</a></li>
+					</ul>
+				</li>
+				<li><a href="<?php echo base_url(); ?>timkiem" >Tìm kiếm</a></li>
+				<li><a href="<?php echo base_url(); ?>baocao/tatca" >Báo cáo</a></li>
+				<li><a href="<?php echo base_url(); ?>thongke/tatca" >Thống kê</a></li>
+				<li><a href="<?php echo base_url(); ?>saoluu_phuchoi" >Sao lưu</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['name'];?> <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="<?php echo base_url(); ?>change_pass">Đổi mật khẩu</a></li>
+						<li><a href="<?php echo base_url(); ?>home/logout">Đăng xuất</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div><!--End toggle-->
 	</nav>
 </header>

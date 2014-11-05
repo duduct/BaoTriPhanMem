@@ -83,15 +83,15 @@ switch(code){
   <legend>Thông tin cập nhật</legend>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <div class="form-group">
-      <label class="col-sm-4 control-label">Số NO</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Số NO</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" id="sono" name="sono" class="form-control" value="<?php echo set_value('sono'); ?>"/>
         <?php echo form_error('sono','<div style="text-align:center">','</div>'); ?>  
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-4 control-label">Đơn vị</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Đơn vị</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <select name="madv" id="madv" class="form-control">
           <?php
           $code = $this->session->userdata('logged_in')['code'];
@@ -120,8 +120,8 @@ switch(code){
       </div>
     </div><!--End form group-->
     <div class="form-group">
-      <label class="col-sm-4 control-label">Loại MBA</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Loại MBA</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <select name="loaimay" id="loaimay" class="form-control">
           <?php
           foreach ($loaimba as $k=>$v){
@@ -132,8 +132,8 @@ switch(code){
       </div>
     </div><!--End form group-->
     <div class="form-group">
-      <label class="col-sm-4 control-label">Tên HSX</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Tên HSX</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <select name="tenhsx" id="tenhsx" class="form-control">
           <?php
           foreach ($nsx as $k=>$v){
@@ -144,22 +144,22 @@ switch(code){
       </div>
     </div><!--End form group-->
     <div class="form-group">
-      <label class="col-sm-4 control-label">Mã số tài sản</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Mã số tài sản</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" name="msts" id="msts" class="form-control">
         <?php echo form_error('msts','<div style="text-align:center">','</div>'); ?> 
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-4 control-label">Năm sản suất</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Năm sản suất</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input name="namsx" type="text" size="15" id="namsx" class="form-control">
         <?php echo form_error('namsx','<div style="text-align:center">','</div>'); ?> 
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-4 control-label">Năm nhập về</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Năm nhập về</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input name="namnv" type="text" size="15" id="namnv" class="form-control">
         <?php echo form_error('namnv','<div style="text-align:center">','</div>'); ?> 
       </div>
@@ -168,41 +168,41 @@ switch(code){
 
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <div class="form-group">
-      <label class="col-sm-4 control-label">Tên MBA</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Tên MBA</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" name="tenmba" id="tenmba" class="form-control">
         <?php echo form_error('tenmba','<div style="text-align:center">','</div>'); ?>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-4 control-label">Công suất (W)</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Công suất (W)</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input name="congsuat" type="text" size="15" id="congsuat" class="form-control">
         <?php echo form_error('congsuat','<div style="text-align:center">','</div>'); ?>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-4 control-label">Điện áp (Kv)</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Điện áp (Kv)</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input name="dienap" type="text" size="15" id="dienap" class='form-control'>
         <?php echo form_error('dienap','<div style="text-align:center">','</div>'); ?>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-4 control-label">Thông số đo</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Thông số đo</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" name="thongsodo" id="thongsodo" class='form-control'>
         <?php echo form_error('thongsodo','<div style="text-align:center">','</div>'); ?>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-4 control-label">Loại dầu</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Loại dầu</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <div class="row">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <input name="loaidau" type="text" size="8" id="loaidau" class='form-control'>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <select name="sl_dau" id="sl_dau" onchange="return change_Dau()" class='form-control'>
               <option>----</option>
               <option><p>Castrol</p></option>
@@ -219,13 +219,13 @@ switch(code){
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-4 control-label">Quốc gia sản xuất</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class="col-xs-12 col-sm-4 control-label">Quốc gia sản xuất</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <div class="row">
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <input name="quocgiasx" type="text" size="8" id="quocgiasx" class='form-control'>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
             <select name="sl_qg" id="sl_qg" onchange="return change_QG()" class='form-control'>
               <option>----</option>
               <option><p>Việt Nam</p></option> 
@@ -241,45 +241,45 @@ switch(code){
       <?php echo form_error('quocgiasx','<div style="text-align:center">','</div>'); ?>
     </div><!--End form group -->
   </div><!--End firsl col 4 -->
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <div class="form-group">
-      <label class="col-sm-5 control-label">Chiều dài (mm)</label>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      <label class="col-xs-12 col-sm-5 control-label">Chiều dài (mm)</label>
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="chieudai" type="text" size="15" id="chieudai" class="form-control">
         <?php echo form_error('chieudai','<div style="text-align:center">','</div>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-5 control-label">Chiều rộng (mm)</label>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      <label class="col-xs-12 col-sm-5 control-label">Chiều rộng (mm)</label>
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="chieurong" type="text" size="15" id="chieurong" class="form-control">
         <?php echo form_error('chieurong','<div style="text-align:center">','</div>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-5 control-label">Chiều cao (mm)</label>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      <label class="col-xs-12 col-sm-5 control-label">Chiều cao (mm)</label>
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="chieucao" type="text" size="15" id="chieucao" class="form-control">
         <?php echo form_error('chieucao','<div style="text-align:center">','</div>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-5 control-label">Trọng lượng ruột máy (kg)</label>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      <label class="col-xs-12 control-label">Trọng lượng ruột máy (kg)</label>
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="tlruotmay" type="text" size="15" id="tlruotmay" class="form-control">
         <?php echo form_error('tlruotmay','<div style="text-align:center">','</div>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-5 control-label">Trọng lượng dầu (kg)</label>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      <label class="col-xs-12 col-sm-5 control-label">Trọng lượng dầu (kg)</label>
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="tldau" type="text" size="15" id="tldau" class="form-control">
         <?php echo form_error('tldau','<div style="text-align:center">','</div>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
-      <label class="col-sm-5 control-label">Tổng trọng lượng (kg)</label>
-      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+      <label class="col-xs-12 col-sm-5 control-label">Tổng trọng lượng (kg)</label>
+      <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="tongtl" type="text" size="15" id="tongtl" class="form-control">
         <?php echo form_error('tongtl','<div style="text-align:center">','</div>'); ?>
       </div>
@@ -297,11 +297,11 @@ switch(code){
   <div class="clearfix">
 
   </div>
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <?php echo form_open('capnhat/capnhatmba', array('class' => 'form-horizontal'));?>
     <div class="form-group">
-      <label class='col-sm-4 control-label'>Xem MBA của</label>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+      <label class='col-xs-12 col-sm-4 control-label'>Xem MBA của</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <select name="madv1" class='form-control' onchange="loadDanhSachMBA()" id='maDonViCanXem'>
          <?php
          $code = $this->session->userdata('logged_in')['code'];
@@ -337,7 +337,7 @@ switch(code){
   </div>
   <?php echo form_close(); ?>
 </div><!--End col 4 xem mba cua don vi -->
-<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style='text-align: right;'>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8" style='text-align: right;'>
  <?php echo form_open_multipart('capnhat/upfile1', array('class' => 'form-inline'));?>
  <div class="form-group">
    <input type="hidden" name="MAX_FILE_SIZE" value="2000000"/> 

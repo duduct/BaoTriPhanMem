@@ -61,7 +61,7 @@
 			<div class="row">
 
 
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 					<div id="left-menu">
 						<!--"<?php echo base_url();?>index.php/donvi"*-->
 						<ul>
@@ -95,9 +95,9 @@
 					</div><!--End left-menu-->
 
 				</div><!--End col 3-->
-				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+				<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 					<div id="timkiem1">
-						<legend>Báo cáo tất cả máy biến áp</legend>
+						<h3>Báo cáo tất cả máy biến áp</h3>
 						<?php
 						if ($title_tt==NULL)
 							echo "<span>Tình trạng: Tất Cả</span>";

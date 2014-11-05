@@ -9,7 +9,7 @@
 <body>
 	<?php $this->load->view('layout/header.php'); ?>
 	<div class="container-fluid">
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 			<form action="" method="POST" role="form" id='form-search'>
 				<legend>Tìm kiếm</legend>
 				<div class="form-group">
@@ -76,7 +76,7 @@
 			};
 			</script>
 		</div><!--End col 4 -->
-		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="result_mba">
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="result_mba">
 		</div><!--End col 9-->
 
 	</div><!--End container fluid -->

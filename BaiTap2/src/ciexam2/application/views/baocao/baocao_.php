@@ -62,7 +62,7 @@
 			<div class="row">
 				
 
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 					<div id="left-menu">
 						<!--"<?php echo base_url();?>index.php/donvi"*-->
 						<ul>
@@ -96,11 +96,11 @@
 
 					</div><!--End left-menu-->
 				</div><!--End col 2-->
-				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+				<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 					<div id="timkiem1">
 						<?php 
 						foreach ($title as  $value) {
-							echo "<legend>Báo cáo máy biến áp của đơn vị <strong>".$value["TEN_DV"]."</strong></legend>";
+							echo "<h3>Báo cáo máy biến áp của đơn vị <strong>".$value["TEN_DV"]."</strong></h3>";
 						}
 						if ($title_tt==NULL)
 							echo "Tình trạng: Tất cả";

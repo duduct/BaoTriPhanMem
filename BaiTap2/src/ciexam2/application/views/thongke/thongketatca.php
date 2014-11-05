@@ -44,7 +44,7 @@
 		<?php $this->load->view('layout/header.php'); ?>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
 					<div id="left-menu">
 						<ul>
 							<li><a href="#" onClick="dv()">Đơn Vị</a>
@@ -75,7 +75,7 @@
 
 					</div><!--End left-menu-->
 				</div><!--End col 2-->
-				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+				<div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
 					<div id="timkiem1">
 						<h3>Thống kê tất cả các máy biến áp</h3>							
 						<div id="result_tk4">
