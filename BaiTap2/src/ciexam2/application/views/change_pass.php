@@ -3,39 +3,40 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/style/css.css">
+  <?php $this->load->view('layout/library.php'); ?>
 </head>
-<body>
-  <header>
-    <div id="logo">
-    </div>
-  </header>
-  <article>
-    <div id="change_pass">
-      <ul>
-        <?php echo form_open('check_change_pass'); ?>
-        <li><p>Tên đăng nhập:</p></li>
-        <li><input type="text" size="20" id="username" name="username" value="<?php echo $this->session->userdata('logged_in')['username'] ?>" /></li>
+<body style="background-image: url(<?php echo base_url();?>template/images/background.png);">
+    <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-4 col-lg-offset-4" style="background: white; box-shadow: 0 20px 100px rgba(0,0,0,.5); border-radius: 4px; padding-top: 20px;">
+     <?php echo form_open('check_change_pass'); ?>
+      <legend>Đổi mật khẩu</legend>
+    
+      <div class="form-group">
+        <label for="">Tên đăng nhập</label>
+        <input type="text" class='form-control' size="20" id="username" name="username" value="<?php echo $this->session->userdata('logged_in')['username'] ?>" />
         <?php echo form_error('username'); ?>
-        <li><p>Mật khẩu:</p></li>
-        <li><input type="password" size="20" id="password" name="password"/></li>
+      </div>
+    <div class="form-group">
+        <label for="">Mật khẩu:</label>
+        <input type="password" class='form-control' size="20" id="password" name="password"/>
         <?php echo form_error('password'); ?>
-        <li><p>Mật khẩu mới:</p></li>
-        <li><input type="password" name="password_new" id="password_new"></li>
+    </div>
+    <div class="form-group">
+        <label for="">Mật khẩu mới:</label>
+        <input type="password" class='form-control' name="password_new" id="password_new">
         <?php echo form_error('password_new'); ?>
-        <li><p>Nhập lại mật khẩu:</p></li>
-        <li><input type="password" name="password_config" id="password_config"></li>
+    </div>
+    <div class="form-group">
+        <label for="">Nhập lại mật khẩu:</label>
+        <input type="password" class='form-control' name="password_config" id="password_config">
         <?php echo form_error('password_config'); ?>
-        <li><input type="submit" value="Change"/></li>
-        <?php form_close(); ?>
-        <li><a id="home" href="http://localhost/ciexam2/" title="">Home</a></li>
-      </ul>
     </div>
-  </article>
-  <footer>
-    <div id="slogen">
-      <p>Developed by kenlove</p>
+    <div class="form-group">
+        <input type="submit" class='btn btn-block btn-primary' value="Cập nhật"/>
     </div>
-  </footer>
+    <div class="form-group">
+        <a href="http://localhost/ciexam2/" title="" class='btn btn-link btn-block'>Trang chủ</a>
+    </div>
+  <?php form_close(); ?>
+  </div><!--End col 4 -->
 </body>
 </html>

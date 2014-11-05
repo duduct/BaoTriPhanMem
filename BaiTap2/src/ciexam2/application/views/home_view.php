@@ -44,7 +44,12 @@
   <div class="container">
     <h2>Công ty điện lực Cà Mau trên bước đường phát triển</h2>
     <div class="row">
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pull-right">
+        <a href="#" class="thumbnail">
+          <img src="<?php echo base_url(); ?>template/images/dlcm.jpg" class="img-responsive" alt="">
+        </a>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <p>Điện lực Cà Mau được thành lập ngày 01/4/1997 trên cơ sở tách ra từ Điện lực Minh Hải cũ, là Doanh nghiệp Nhà nước trực thuộc Công ty Điện lực 2 - Tập đoàn Điện lực Việt Nam.</p>
         <p>Từ ngày 14-04-2010 Điện lực Cà Mau được đổi tên thành Công ty Điện lực Cà Mau trực thuộc Tổng Công ty Điện lực Miền Nam - Tập đoàn Điện lực Việt Nam.</p>
         <p>Ngành nghề kinh doanh sản xuất chính gồm:</p>
@@ -64,11 +69,7 @@
         <abbr title="Email">Email:</abbr> dienluc.cm@pc2.vn<br>
       </address>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <a href="#" class="thumbnail">
-          <img src="<?php echo base_url(); ?>template/images/dlcm.jpg" class="img-responsive" alt="">
-        </a>
-      </div>  
+      
     </div>
     
   </div>
