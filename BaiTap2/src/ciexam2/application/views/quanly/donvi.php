@@ -53,15 +53,15 @@
       </div>
       <div class="form-group">
         <label for="">Quyền</label>
-       
-        <select name="txtQ" id="txtQ" type="text" size="10" value="<?php echo set_value('txtQ'); ?>" class="form-control">
+        <select name="txtQ" id="txtQ"  class='form-control' >
           <?php             
                  $selected = $_POST['txtQ'];
-              ?>
+          ?>
             <option <?php if($selected == '1'){echo("selected");}?> value="1">1</option>
             <option <?php if($selected == '2'){echo("selected");}?> value="2">2</option>
             <option <?php if($selected == '3'){echo("selected");}?> value="3">3</option>
         </select>
+
         <?php echo form_error('txtQ','<small class="text-danger help-block">','</small>'); ?>
       </div>
       <button type="submit" name="submit" class="btn btn-default" value="Thêm">Thêm</button>

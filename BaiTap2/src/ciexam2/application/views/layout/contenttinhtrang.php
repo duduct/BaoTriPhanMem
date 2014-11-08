@@ -29,6 +29,17 @@ switch(code){
       </div>
     </div><!--End form group -->
     <div class="form-group">
+      <label class="col-xs-12 col-sm-4 control-label">Tình trạng</label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <select name="matt" id="matt" class='form-control'>
+              <?php
+                foreach ($tinhtrang as $k=>$v){
+                echo "<option value=$v->MA_TT>$v->TRANGTHAI</option>";            }
+              ?>
+        </select>
+      </div>
+    </div><!--End form group -->
+    <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Thời gian</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input name="ngayxet" class='form-control' type="text" size="15" readonly="readonly" value="<?php 
@@ -121,6 +132,7 @@ switch(code){
       <label class="col-xs-12 col-sm-4 control-label">Ghi chú</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <textarea name="nd_daitu" id="nd_daitu" type="text" size="25" class='form-control'></textarea>
+        <br>
       </div>
     </div><!--End form group -->
     <div class="form-group pull-right">

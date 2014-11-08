@@ -24,8 +24,14 @@ class VerifyLogin extends CI_Controller {
     }
     else
     {
-      //Go to private area
-      redirect('home', 'refresh');
+      $code =  $this->session->userdata('logged_in')['code'];
+      if($code == 1){
+          redirect('thongke/tatca', 'refresh');
+      }
+      else{
+          redirect('home', 'refresh');
+      }
+      
     }
     
   }
@@ -57,7 +63,7 @@ class VerifyLogin extends CI_Controller {
     }
     else
     {
-      $this->form_validation->set_message('check_database', 'Invalid username or password');
+      $this->form_validation->set_message('check_database', 'Tài khoản hoặc mật khẩu bị sai.');
       return false;
     }
   }
