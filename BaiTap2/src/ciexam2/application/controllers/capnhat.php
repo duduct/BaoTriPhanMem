@@ -301,6 +301,8 @@ public function tinhtrang(){
 				$this->load->library('form_validation');
 				$this->lang->load('vi', 'vietnamese');
 				$this->form_validation->set_message('required', $this->lang->line('required'));
+				$this->form_validation->set_message('greater_than', $this->lang->line('greater_than'));
+				
 						$so_no=$this->input->post('sono');
 						$ten_mba=$this->input->post('madv');
 						$ma_dv=$this->input->post('madv');
@@ -368,29 +370,29 @@ public function tinhtrang(){
 						
 						$this->form_validation->set_rules('quocgiasx','Quốc gia sản xuất','required|trim|xss_clean|callback_check_max_length_quocgiasx');
 						
-						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|callback_check_max_length_congsuat');
+						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|callback_check_max_length_congsuat|greater_than[0]');
 								
 						$this->form_validation->set_rules('dienap','Điện Áp','required|trim|xss_clean|callback_check_max_length_dienap');
 										
 				 		$this->form_validation->set_rules('loaidau','Loại Dầu','required|trim|xss_clean');
 											
-						$this->form_validation->set_rules('chieudai','Chiều Dài','required|trim|xss_clean');
+						$this->form_validation->set_rules('chieudai','Chiều Dài','required|trim|xss_clean|greater_than[0]');
 												
-						$this->form_validation->set_rules('chieurong','Chiều Rộng','required|trim|xss_clean');
+						$this->form_validation->set_rules('chieurong','Chiều Rộng','required|trim|xss_clean|greater_than[0]');
 													
-						$this->form_validation->set_rules('chieucao','Chiều Cao','required|trim|xss_clean');
+						$this->form_validation->set_rules('chieucao','Chiều Cao','required|trim|xss_clean|greater_than[0]');
 														
-						$this->form_validation->set_rules('tlruotmay','Trọng Lượn Ruột Máy','required|trim|xss_clean');
+						$this->form_validation->set_rules('tlruotmay','Trọng Lượng Ruột Máy','required|trim|xss_clean|greater_than[0]');
 														    
-						$this->form_validation->set_rules('tldau','Trọng Lượng Dầu','required|trim|xss_clean');
+						$this->form_validation->set_rules('tldau','Trọng Lượng Dầu','required|trim|xss_clean|greater_than[0]');
 																
-						$this->form_validation->set_rules('tongtl','Tổng Trọng Lượng','required|trim|xss_clean');
+						$this->form_validation->set_rules('tongtl','Tổng Trọng Lượng','required|trim|xss_clean|greater_than[0]');
 
-						$this->form_validation->set_rules('namsx','Năm sản xuất','trim|xss_clean');
+						$this->form_validation->set_rules('namsx','Năm sản xuất','trim|xss_clean|greater_than[0]');
 
 						$this->form_validation->set_rules('msts','Mã số tài sản','trim|xss_clean|callback_ktMSTS');
 
-						$this->form_validation->set_rules('namnv','Năm nhập về','required|trim|xss_clean|callback_ktNAMNV');
+						$this->form_validation->set_rules('namnv','Năm nhập về','required|trim|xss_clean|callback_ktNAMNV|greater_than[0]');
 
 						$this->form_validation->set_rules('tenmba','Tên máy biến áp','trim|xss_clean');
 						
@@ -409,29 +411,29 @@ public function tinhtrang(){
 						
 						$this->form_validation->set_rules('quocgiasx','Quốc gia sản xuất','required|trim|xss_clean|callback_check_max_length_quocgiasx');
 						
-						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|callback_check_max_length_congsuat');
+						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|callback_check_max_length_congsuat|greater_than[0]');
 								
 						$this->form_validation->set_rules('dienap','Điện Áp','required|trim|xss_clean|callback_check_max_length_dienap');
 										
 				 		$this->form_validation->set_rules('loaidau','Loại Dầu','required|trim|xss_clean');
 											
-						$this->form_validation->set_rules('chieudai','Chiều Dài','required|trim|xss_clean');
+						$this->form_validation->set_rules('chieudai','Chiều Dài','required|trim|xss_clean|greater_than[0]');
 												
-						$this->form_validation->set_rules('chieurong','Chiều Rộng','required|trim|xss_clean');
+						$this->form_validation->set_rules('chieurong','Chiều Rộng','required|trim|xss_clean|greater_than[0]');
 													
-						$this->form_validation->set_rules('chieucao','Chiều Cao','required|trim|xss_clean');
+						$this->form_validation->set_rules('chieucao','Chiều Cao','required|trim|xss_clean|greater_than[0]');
 														
-						$this->form_validation->set_rules('tlruotmay','Trọng Lượn Ruột Máy','required|trim|xss_clean');
+						$this->form_validation->set_rules('tlruotmay','Trọng Lượng Ruột Máy','required|trim|xss_clean|greater_than[0]');
 														    
-						$this->form_validation->set_rules('tldau','Trọng Lượng Dầu','required|trim|xss_clean');
+						$this->form_validation->set_rules('tldau','Trọng Lượng Dầu','required|trim|xss_clean|greater_than[0]');
 																
-						$this->form_validation->set_rules('tongtl','Tổng Trọng Lượng','required|trim|xss_clean');
+						$this->form_validation->set_rules('tongtl','Tổng Trọng Lượng','required|trim|xss_clean|greater_than[0]');
 
-						$this->form_validation->set_rules('namsx','Năm sản xuất','trim|xss_clean');
+						$this->form_validation->set_rules('namsx','Năm sản xuất','trim|xss_clean|greater_than[0]');
 
 						$this->form_validation->set_rules('msts','Mã số tài sản','trim|xss_clean|callback_ktMSTS_CapNhat['.$this->input->post('sono').']');
 
-						$this->form_validation->set_rules('namnv','Năm nhập về','required|trim|xss_clean|callback_ktNAMNV');
+						$this->form_validation->set_rules('namnv','Năm nhập về','required|trim|xss_clean|callback_ktNAMNV|greater_than[0]');
 
 						$this->form_validation->set_rules('tenmba','Tên máy biến áp','trim|xss_clean');
 						
@@ -540,12 +542,18 @@ public function tinhtrang(){
 		}
 
 
-		public function ktNAMNV($val){	
-			if($this->input->post('namsx') > $val)
-			{
+		public function ktNAMNV($val){
+			$year = date("Y");
+			if($val > $year){
+				$this->form_validation->set_message('ktNAMNV', '\'%s\' phải nhỏ hơn hoặc bằng năm hiện tại.');
+				return false;
+			}else{
+				if($this->input->post('namsx') > $val)
+				{
 				$this->form_validation->set_message('ktNAMNV', '\'%s\' phải lớn hơn hoặc bằng '.$this->input->post('namsx'));
 	    		return false;
-			}		
+				}
+			}	
 			return true;
 			}	
 		public function ktSN($sn){

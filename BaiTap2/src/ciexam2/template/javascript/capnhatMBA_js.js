@@ -11,6 +11,12 @@ function change_Dau(){
 		document.getElementById('loaidau').value=document.getElementById('sl_dau').value;
 		} 
 	}
+function change_DienAp(){
+	if(document.getElementById('sl_dienap').value != '----')
+	{
+		document.getElementById('dienap').value=document.getElementById('sl_dienap').value;
+		} 
+	}
 function change_QG(){
 	if(document.getElementById('sl_qg').value != '----')
 	{
@@ -39,78 +45,66 @@ function check()
 	document.getElementById('ngaykt').disabled=true;
 		}
 }
-function kiemtra()
-{ 	
-	sx=parseInt(document.getElementById('namsx').value);
-	nv=parseInt(document.getElementById('namnv').value);
-	if( sx > nv) 
-	{	
-		alert("Vui lòng nhập lại năm");
-		document.getElementById('namnv').focus();
-		return false;
-	
-	}
-	else if(isNaN(document.getElementById('namsx').value))
-	{
-		alert("năm sản xuất phải nhập số");
-		document.getElementById('namsx').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('namnv').value))
-	{
-		alert("năm nhập về phải nhập số");
-		document.getElementById('namnv').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('congsuat').value))
-	{
-		alert("Công suất phải nhập số");
-		document.getElementById('congsuat').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('dienap').value))
-	{
-		alert("Điện áp phải nhập số");
-		document.getElementById('dienap').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('chieudai').value))
-	{
-		alert("Chiều dài phải nhập số");
-		document.getElementById('chieudai').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('chieurong').value))
-	{
-		alert("Chiều rộng phải nhập số");
-		document.getElementById('chieurong').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('chieucao').value))
-	{
-		alert("Chiều cao phải nhập số");
-		document.getElementById('chieucao').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('tlruotmay').value))
-	{
-		alert("Trọng lượng ruột máy phải nhập số");
-		document.getElementById('tlruotmay').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('tldau').value))
-	{
-		alert("Trọng lượng dầu phải nhập số");
-		document.getElementById('tldau').focus();
-		return false;
-	}
-	else if(isNaN(document.getElementById('tongtl').value))
-	{
-		alert("Tổng trọng lượng phải nhập số");
-		document.getElementById('tongtl').focus();
-		return false;
-	}
-}
+// function kiemtra()
+// { 	
+// 	var pattern1 = /^[A-Z]*[a-z]*$/; 
+// 	 if(isNaN(document.getElementById('namnv').value) || document.getElementById('namnv').value < 0)
+// 	{
+// 		alert("Năm nhập về phải nhập số lớn hơn 0");
+// 		document.getElementById('namnv').focus();
+// 		return false;
+// 	}
+// 	else if(isNaN(document.getElementById('congsuat').value) || document.getElementById('congsuat').value < 0)
+// 	{
+// 		alert("Công suất phải nhập số lớn hơn 0");
+// 		document.getElementById('congsuat').focus();
+// 		return false;
+// 	}
+// 	else if(document.getElementById('dienap').value != ""){ 
+// 		if(pattern1.test(document.getElementById('dienap').value) || document.getElementById('dienap').value < 0)
+// 		{
+// 			alert("Điện áp phải nhập số lớn hơn 0");
+// 			document.getElementById('dienap').focus();
+// 			return false;
+// 		}
+// 	}
+// 	else if(isNaN(document.getElementById('chieudai').value))
+// 	{
+// 		alert("Chiều dài phải nhập số");
+// 		document.getElementById('chieudai').focus();
+// 		return false;
+// 	}
+// 	else if(isNaN(document.getElementById('chieurong').value))
+// 	{
+// 		alert("Chiều rộng phải nhập số");
+// 		document.getElementById('chieurong').focus();
+// 		return false;
+// 	}
+// 	else if(isNaN(document.getElementById('chieucao').value))
+// 	{
+// 		alert("Chiều cao phải nhập số");
+// 		document.getElementById('chieucao').focus();
+// 		return false;
+// 	}
+// 	else if(isNaN(document.getElementById('tlruotmay').value))
+// 	{
+// 		alert("Trọng lượng ruột máy phải nhập số");
+// 		document.getElementById('tlruotmay').focus();
+// 		return false;
+// 	}
+// 	else if(isNaN(document.getElementById('tldau').value))
+// 	{
+// 		alert("Trọng lượng dầu phải nhập số");
+// 		document.getElementById('tldau').focus();
+// 		return false;
+// 	}
+// 	else if(isNaN(document.getElementById('tongtl').value))
+// 	{
+// 		alert("Tổng trọng lượng phải nhập số");
+// 		document.getElementById('tongtl').focus();
+// 		return false;
+// 	}
+// }
 function check1()
 {	
 	if(document.getElementById('c2').checked==true) {

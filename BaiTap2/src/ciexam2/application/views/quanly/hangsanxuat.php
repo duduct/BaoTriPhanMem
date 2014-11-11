@@ -59,12 +59,12 @@
         <div class="form-group">
           <label>Mã hãng sản xuất</label>
           <input name="txtM_Hsx" id="txtM_Hsx" type="text" class="form-control" size="15" value="<?php echo set_value('txtM_Hsx'); ?>"/>
-          <?php echo form_error('txtM_Hsx','<div style="text-align:center">','</div>'); ?>
+          <?php echo form_error('txtM_Hsx','<small class="text-danger help-block">','</small>'); ?>
         </div>
         <div class="form-group">
           <label>Tên hãng sản xuất</label>
           <input name="txtT_Hsx" id="txtT_Hsx" type="text" class="form-control" size="15" value="<?php echo set_value('txtT_Hsx'); ?>"/>
-          <?php echo form_error('txtT_Hsx','<div style="text-align:center">','</div>'); ?>
+          <?php echo form_error('txtT_Hsx','<small class="text-danger help-block">','</small>'); ?>
         </div>
         <div class="form-group">
           <input class="btn btn-default" name="submit" type="submit" value="Thêm" />

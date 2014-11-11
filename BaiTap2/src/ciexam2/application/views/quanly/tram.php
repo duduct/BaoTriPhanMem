@@ -60,17 +60,17 @@
         <div class="form-group">
           <label>Mã trạm</label>
           <input name="txtM_Tr" id="txtM_Tr" class="form-control" type="text" size="15" value="<?php echo set_value('txtM_Tr'); ?>"/>
-          <?php echo form_error('txtM_Tr','<div style="text-align:center">','</div>'); ?>
+          <?php echo form_error('txtM_Tr','<small class="text-danger help-block">','</small>'); ?>
         </div>
         <div class="form-group">
           <label for="">Tên trạm</label>
           <input name="txtT_Tr" id="txtT_Tr" type="text" class="form-control" size="40" value="<?php echo set_value('txtT_Tr'); ?>"/>
-          <?php echo form_error('txtT_Tr','<div style="text-align:center">','</div>'); ?>
+          <?php echo form_error('txtT_Tr','<small class="text-danger help-block">','</small>'); ?>
         </div>
         <div class="form-group">
           <label>Địa chi trạm</label>
           <input name="txtDC_Tr" id="txtDC_Tr" type="text" class="form-control" size="20" value="<?php echo set_value('txtDC_Tr'); ?>"/>
-          <?php echo form_error('txtDC_Tr','<div style="text-align:center">','</div>'); ?>
+          <?php echo form_error('txtDC_Tr','<small class="text-danger help-block">','</small>'); ?>
         </div>
         <div class="form-group">
           <input class="btn btn-default" name="submit" type="submit" value="Thêm" />

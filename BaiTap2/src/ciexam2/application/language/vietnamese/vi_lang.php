@@ -8,6 +8,8 @@
 	$lang['required'] = "Trường '%s' là bắt buộc."; 
 	$lang['is_unique'] = "'%s' đã tồn tại."; 
 	$lang['matches'] = "'%s' không trùng khớp '%s'.";
+	$lang['greater_than'] = "'%s' phải là số lớn hơn %s.";
+	
 	$lang['lbMDV'] = "Mã đơn vị"; 
 	$lang['lbTDV'] = "Tên đơn vị"; 
 

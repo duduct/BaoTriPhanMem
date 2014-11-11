@@ -363,6 +363,7 @@ class Quanly extends CI_Controller {
 				}
 				else if ($this->input->post('submit')=='Thêm'){
 						$this->form_validation->set_rules('txtT_Hsx','lang:TenHangSanXuat','is_unique[nhasanxuat.TEN_HSX]');
+						$this->form_validation->set_rules('txtM_Hsx','lang:MaHangSanXuat','is_unique[nhasanxuat.MA_HSX]');
 						if ($this->form_validation->run() == FALSE){
 							$this->index();
 						}

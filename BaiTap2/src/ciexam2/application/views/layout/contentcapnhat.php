@@ -86,7 +86,7 @@ switch(code){
       <label class="col-xs-12 col-sm-4 control-label">Số NO</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" id="sono" name="sono" class="form-control" value="<?php echo set_value('sono'); ?>"/>
-        <?php echo form_error('sono','<div style="text-align:center">','</div>'); ?>  
+        <?php echo form_error('sono','<small class="text-danger help-block">','</small>'); ?>  
       </div>
     </div>
     <div class="form-group">
@@ -147,21 +147,22 @@ switch(code){
       <label class="col-xs-12 col-sm-4 control-label">Mã số tài sản</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" name="msts" id="msts" class="form-control" value="<?php echo set_value('msts'); ?>">
-        <?php echo form_error('msts','<div style="text-align:center">','</div>'); ?> 
+        <?php echo form_error('msts','<small class="text-danger help-block">','</small>'); ?> 
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Năm sản suất</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <input type="number" name="namsx" type="text" size="15" id="namsx" class="form-control" min="1000" value="<?php echo set_value('namsx'); ?>">
-        <?php echo form_error('namsx','<div style="text-align:center">','</div>'); ?> 
+        <input type="number" name="namsx" type="text" size="15" id="namsx" class="form-control" min="1800" value="<?php echo set_value('namsx'); ?>">
+        <?php echo form_error('namsx','<small class="text-danger help-block">','</small>'); ?> 
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Năm nhập về</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <input type="number" name="namnv" type="text" size="15" id="namnv" class="form-control" min="1000" value="<?php echo set_value('namnv'); ?>">
-        <?php echo form_error('namnv','<div style="text-align:center">','</div>'); ?> 
+        <input type="number" name="namnv" type="text" size="15" id="namnv" class="form-control" min="1900" value="<?php echo set_value('namnv'); ?>">
+        <?php echo form_error('namnv','<small class="text-danger help-block">','</small
+        >'); ?> 
       </div>
     </div><!--End form group -->
   </div><!--End first col3-->
@@ -171,14 +172,14 @@ switch(code){
       <label class="col-xs-12 col-sm-4 control-label">Tên MBA</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" name="tenmba" id="tenmba" class="form-control" value="<?php echo set_value('tenmba'); ?>">
-        <?php echo form_error('tenmba','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('tenmba','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div>
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Công suất (W)</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input name="congsuat" type="text" size="15" id="congsuat" class="form-control" value="<?php echo set_value('congsuat'); ?>">
-        <?php echo form_error('congsuat','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('congsuat','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div>
     <div class="form-group">
@@ -202,14 +203,14 @@ switch(code){
 
           </div>  
         </div>
-        <?php echo form_error('dienap','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('dienap','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div>
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Thông số đo</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="text" name="thongsodo" id="thongsodo" class='form-control' value="<?php echo set_value('thongsodo'); ?>">
-        <?php echo form_error('thongsodo','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('thongsodo','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div>
     <div class="form-group">
@@ -232,7 +233,7 @@ switch(code){
 
           </div>  
         </div>
-        <?php echo form_error('loaidau','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('loaidau','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
@@ -255,7 +256,7 @@ switch(code){
           </div>  
         </div>
       </div>
-      <?php echo form_error('quocgiasx','<div style="text-align:center">','</div>'); ?>
+      <?php echo form_error('quocgiasx','<small class="text-danger help-block">','</small>'); ?>
     </div><!--End form group -->
   </div><!--End firsl col 4 -->
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -263,42 +264,42 @@ switch(code){
       <label class="col-xs-12 col-sm-5 control-label">Chiều dài (mm)</label>
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="chieudai" type="text" size="15" id="chieudai" class="form-control" value="<?php echo set_value('chieudai'); ?>">
-        <?php echo form_error('chieudai','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('chieudai','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-5 control-label">Chiều rộng (mm)</label>
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="chieurong" type="text" size="15" id="chieurong" class="form-control" value="<?php echo set_value('chieurong'); ?>">
-        <?php echo form_error('chieurong','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('chieurong','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-5 control-label">Chiều cao (mm)</label>
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="chieucao" type="text" size="15" id="chieucao" class="form-control" value="<?php echo set_value('chieucao'); ?>">
-        <?php echo form_error('chieucao','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('chieucao','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-5 control-label">Trọng lượng ruột máy (kg)</label>
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="tlruotmay" type="text" size="15" id="tlruotmay" class="form-control" value="<?php echo set_value('tlruotmay'); ?>">
-        <?php echo form_error('tlruotmay','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('tlruotmay','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-5 control-label">Trọng lượng dầu (kg)</label>
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="tldau" type="text" size="15" id="tldau" class="form-control" value="<?php echo set_value('tldau'); ?>">
-        <?php echo form_error('tldau','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('tldau','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-5 control-label">Tổng trọng lượng (kg)</label>
       <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
         <input name="tongtl" type="text" size="15" id="tongtl" class="form-control" value="<?php echo set_value('tongtl'); ?>">
-        <?php echo form_error('tongtl','<div style="text-align:center">','</div>'); ?>
+        <?php echo form_error('tongtl','<small class="text-danger help-block">','</small>'); ?>
       </div>
     </div><!--End form group -->
     <div class="form-group pull-right" style="margin-right: 5px;">
