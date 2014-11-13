@@ -30,12 +30,12 @@ switch(code){
     </div><!--End form group -->
   </div>
   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-  <?php echo form_error('tinhtrang_tc','<small class="text-danger help-block">','</small>'); ?> 
-   <?php echo form_error('tinhtrang_tb','<small class="text-danger help-block">','</small>'); ?> 
-   <?php echo form_error('qtsd_tc','<small class="text-danger help-block">','</small>'); ?>
-   <?php echo form_error('qtsd_tb','<small class="text-danger help-block">','</small>'); ?>
-   <?php echo form_error('daitu_tc','<small class="text-danger help-block">','</small>'); ?>
-   <?php echo form_error('daitu_tb','<small class="text-danger help-block">','</small>'); ?>
+  <?php echo form_error('tinhtrang_tc','<small class="text-danger help-block text-center">','</small>'); ?> 
+   <?php echo form_error('tinhtrang_tb','<small class="text-danger help-block text-center">','</small>'); ?> 
+   <?php echo form_error('qtsd_tc','<small class="text-danger help-block text-center">','</small>'); ?>
+   <?php echo form_error('qtsd_tb','<small class="text-danger help-block text-center">','</small>'); ?>
+   <?php echo form_error('daitu_tc','<small class="text-danger help-block text-center">','</small>'); ?>
+   <?php echo form_error('daitu_tb','<small class="text-danger help-block text-center">','</small>'); ?>
  </div>
   <div class='clearfix'></div>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">

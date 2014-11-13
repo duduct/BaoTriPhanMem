@@ -29,7 +29,7 @@
 
 		// Lấy dữ liệu từ bảng mba, nhasanxuat khi SUDUNG_MBA = 1
 		public function get_hsx(){
-			$this->db->select ( 'COUNT(*) AS `soluong`,TEN_HSX as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,TEN_HSX as TEN' );
 			$this->db->where("mba.SUDUNG_MBA",1);
 			$this->db->from('mba');
 			$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
@@ -39,7 +39,7 @@
 		}
 		// Lấy dữ liệu từ bảng tinhtrang_mba, chitiet_tinhtrang khi TT_MOI = 1
 		public function get_tt(){
-			$this->db->select ( 'COUNT(*) AS `soluong`,TRANGTHAI as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,TRANGTHAI as TEN' );
 			$this->db->where("chitiet_tinhtrang.TT_MOI",1);
 			$this->db->from('chitiet_tinhtrang');
 			$this->db->join('tinhtrang_mba', 'tinhtrang_mba.MA_TT = chitiet_tinhtrang.MA_TT');
@@ -49,7 +49,7 @@
 		}
 		// Lấy dữ liệu từ bảng mba, donvi khi SUDUNG_MBA = 1
 		public function get_donvitk(){
-			$this->db->select ( 'COUNT(*) AS `soluong`,TEN_DV as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,TEN_DV as TEN' );
 			$this->db->where("mba.SUDUNG_MBA",1);
 			$this->db->from('mba');
 			$this->db->join('donvi', 'donvi.MA_DV = mba.MA_DV');
@@ -59,7 +59,7 @@
 		}
 		// Lấy dữ liệu từ bảng mba khi SUDUNG_MBA = 1
 		public function get_cs(){
-			$this->db->select ( 'COUNT(*) AS `soluong`,CONGSUAT as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,CONGSUAT as TEN' );
 			$this->db->where("mba.SUDUNG_MBA",1);
 			$this->db->from('mba');
 			$this->db->group_by('CONGSUAT');
@@ -69,7 +69,7 @@
 		// Input: mã đơn vị
 		// Lấy dữ liệu từ bảng mba, donvi, nhasanxuat khi SUDUNG_MBA = 1, MA_DV = $value
 		public function get_hsxdv($value){
-			$this->db->select ( 'COUNT(*) AS `soluong`,TEN_HSX as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,TEN_HSX as TEN' );
 			$this->db->where('donvi.MA_DV', $value);
 			$this->db->where("mba.SUDUNG_MBA",1);
 			$this->db->from('mba');
@@ -82,7 +82,7 @@
 		// Input: mã đơn vị
 		// Lấy dữ liệu từ bảng mba, donvi, chitiet_tinhtrang, tinhtrang_mba khi SUDUNG_MBA = 1, TT_MOI = 1, MA_DV = $value
 		public function get_ttdv($value){
-			$this->db->select ( 'COUNT(*) AS `soluong`,TRANGTHAI as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,TRANGTHAI as TEN' );
 			$this->db->where('donvi.MA_DV', $value);
 			$this->db->where("chitiet_tinhtrang.TT_MOI",1);
 			$this->db->where("mba.SUDUNG_MBA",1);
@@ -97,7 +97,7 @@
 		// Input: mã đơn vị
 		// Lấy dữ liệu từ bảng mba, donvi khi SUDUNG_MBA = 1,  MA_DV = $value
 		public function get_donvitkdv($value){
-			$this->db->select ( 'COUNT(*) AS `soluong`,TEN_DV as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,TEN_DV as TEN' );
 			$this->db->where('donvi.MA_DV', $value);
 			$this->db->where("mba.SUDUNG_MBA",1);
 			$this->db->from('mba');
@@ -109,7 +109,7 @@
 		// Input: mã đơn vị
 		// Lấy dữ liệu từ bảng mba khi SUDUNG_MBA = 1,  MA_DV = $value
 		public function get_csdv($value){
-			$this->db->select ( 'COUNT(*) AS `soluong`,CONGSUAT as TEN' );
+			$this->db->select ( 'COUNT(*) AS soluong,CONGSUAT as TEN' );
 			$this->db->where('MA_DV', $value);
 			$this->db->where("mba.SUDUNG_MBA",1);
 			$this->db->from('mba');

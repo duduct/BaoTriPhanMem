@@ -34,7 +34,7 @@
         <input type="submit" class='btn btn-block btn-primary' value="Cập nhật"/>
     </div>
     <div class="form-group">
-        <a href="http://localhost/ciexam2/" title="" class='btn btn-link btn-block'>Trang chủ</a>
+        <a href="<?php echo base_url();?>" title="" class='btn btn-link btn-block'>Trang chủ</a>
     </div>
   <?php form_close(); ?>
   </div><!--End col 4 -->

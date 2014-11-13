@@ -37,8 +37,8 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<?php echo base_url();?>login"><img src="<?php echo base_url();?>template/images/logo.png" alt="Công ty điện lực Cà Mau" style="height: 40px; witdh: auto; margin: -10px;"></a>
-			<a class="navbar-brand" href="http://localhost/ciexam2/login">Công Ty Điện Lực Cà Mau</a>
+			<a class="navbar-brand" href="<?php echo base_url();?>"><img src="<?php echo base_url();?>template/images/logo.png" alt="Công ty điện lực Cà Mau" style="height: 40px; witdh: auto; margin: -10px;"></a>
+			<a class="navbar-brand" href="<?php echo base_url();?>">Công Ty Điện Lực Cà Mau</a>
 		</div><!--End brand-->
 		
 		<!-- Collect the nav links, forms, and other content for toggling -->
