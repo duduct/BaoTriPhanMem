@@ -42,13 +42,16 @@
 		</div><!--End brand-->
 		
 		<!-- Collect the nav links, forms, and other content for toggling -->
+		
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav">
-				<li class='dropdown'>
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">Quản lý <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<?php
-      					$code = $this->session->userdata('logged_in')['code'];
+			<?php
+      		$code = $this->session->userdata('logged_in')['code'];
+			echo "<ul class='nav navbar-nav'>";
+				echo "<li class='dropdown'>";
+					if ($code < 3){
+					echo '<a href="" class="dropdown-toggle" data-toggle="dropdown">Quản lý <span class="caret"></span></a>';
+					echo '<ul class="dropdown-menu" role="menu">';
+						
       					if($code == 1){
       						echo "<li><a href='".base_url()."quanly/donvi'>Đơn vị</a></li>";
       					}
@@ -56,21 +59,27 @@
 							echo "<li><a href='".base_url()."quanly/tram'>Trạm</a></li>";
 							echo "<li><a href='".base_url()."quanly/hangsanxuat'>Hãng sản xuất</a></li>";
 						}
-						?>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="" class="dropdown-toggle" data-toggle="dropdown">Cập nhật  <span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="<?php echo base_url(); ?>capnhat/capnhatmba">Máy biến áp</a></li>
-						<li><a href="<?php echo base_url(); ?>capnhat/tinhtrang">Tình trạng máy biến áp</a></li>
-					</ul>
-				</li>
-				<li><a href="<?php echo base_url(); ?>timkiem" >Tìm kiếm</a></li>
-				<li><a href="<?php echo base_url(); ?>baocao/tatca" >Báo cáo</a></li>
-				<li><a href="<?php echo base_url(); ?>thongke/tatca" >Thống kê</a></li>
-				<li><a href="<?php echo base_url(); ?>saoluu_phuchoi" >Sao lưu</a></li>
-			</ul>
+						
+					echo "</ul>";
+					}
+				echo "</li>";
+				echo '<li class="dropdown">';
+					echo '<a href="" class="dropdown-toggle" data-toggle="dropdown">Cập nhật  <span class="caret"></span></a>';
+					echo '<ul class="dropdown-menu" role="menu">';
+						echo '<li><a href="'.base_url().'capnhat/capnhatmba">Máy biến áp</a></li>';
+						if($code < 3){
+						echo '<li><a href="'.base_url().'capnhat/tinhtrang">Tình trạng máy biến áp</a></li>';
+						}
+					echo '</ul>';
+				echo '</li>';
+				echo '<li><a href="'.base_url().'timkiem" >Tìm kiếm</a></li>';
+				if($code < 3){
+				echo '<li><a href="'.base_url().'baocao/tatca" >Báo cáo</a></li>';
+				echo '<li><a href="'.base_url().'thongke/tatca" >Thống kê</a></li>';
+				echo '<li><a href="'.base_url().'saoluu_phuchoi" >Sao lưu</a></li>';
+				}
+			echo '</ul>';
+			?>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $this->session->userdata('logged_in')['name'];?> <span class="caret"></span></a>
@@ -81,5 +90,6 @@
 				</li>
 			</ul>
 		</div><!--End toggle-->
+		
 	</nav>
 </header>
