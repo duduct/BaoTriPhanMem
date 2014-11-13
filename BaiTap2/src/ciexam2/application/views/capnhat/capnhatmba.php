@@ -23,7 +23,12 @@
 		<!--Navigation to other link -->
 	    <ul class="nav nav-pills nav-justified" style="margin-bottom: 15px;">
 	      	<li class='active'><a href="<?php echo base_url();?>capnhat/capnhatmba">Máy Biến Áp</a></li>
-			<li><a href="<?php echo base_url();?>capnhat/tinhtrang">Tinh Trạng MBA</a></li>
+	      	<?php
+      		$code = $this->session->userdata('logged_in')['code'];
+      		if($code < 3){
+			echo'<li><a href="'.base_url().'capnhat/tinhtrang">Tinh Trạng MBA</a></li>';
+			}
+			?>
 	    </ul><!--End navigation-->
 	</div><!--End container -->
 	<?php $this->load->view('layout/contentcapnhat.php'); ?>
