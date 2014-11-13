@@ -33,7 +33,7 @@ class check_change_pass extends CI_Controller {
 				}
 			}
 	}
-
+	//Kiểm tra mật khẩu cũ trước khi đổi password
 	public function check_MK($pass_old){
 		$this->load->model('users');
 		if($this->users->check_MK($pass_old) == true){

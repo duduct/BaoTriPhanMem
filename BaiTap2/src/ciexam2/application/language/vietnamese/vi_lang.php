@@ -9,7 +9,11 @@
 	$lang['is_unique'] = "'%s' đã tồn tại."; 
 	$lang['matches'] = "'%s' không trùng khớp '%s'.";
 	$lang['greater_than'] = "'%s' phải là số lớn hơn %s.";
+	$lang['max_length'] = "Trường '%s' không thể vượt quá %s ký tự.";
 	
+
+
+
 	$lang['lbMDV'] = "Mã đơn vị"; 
 	$lang['lbTDV'] = "Tên đơn vị"; 
 

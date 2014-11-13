@@ -1,141 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Md_timkiem extends CI_Model {
-
-	public function search_sono($value)
-	{
-		$this->db->where('SONO', $value);
-		$this->db->where("SUDUNG_MBA",'1');	
-		$this->db->from('mba');
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_sono_mdv($value,$mdv)
-	{
-		$this->db->where('mba.SONO', $value);
-		$this->db->where('mba.MA_DV',$mdv);
-		$this->db->where("SUDUNG_MBA",'1');	
-		$this->db->from('mba');
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_congsuat($value)
-	{
-		$this->db->where('CONGSUAT', $value);
-		$this->db->where("SUDUNG_MBA",'1');	
-		$this->db->from('mba');
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_congsuat_mdv($value,$mdv)
-	{
-		$this->db->where('CONGSUAT', $value);
-		$this->db->where('mba.MA_DV',$mdv);
-		$this->db->where("SUDUNG_MBA",'1');	
-		$this->db->from('mba');
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_donvi($value)
-	{
-		$this->db->where('mba.MA_DV', $value);
-		$this->db->where("SUDUNG_MBA",'1');	
-		$this->db->from('mba');
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_tram($value)
-	{
-		$this->db->select('*');
-		$this->db->where("SUDUNG_MBA",'1');
-		$this->db->where('tram.MATRAM', $value);
-		$this->db->from('mba');
-		$this->db->join('chitiet_qtsd', 'chitiet_qtsd.SONO = mba.SONO');
-		$this->db->join('tram', 'chitiet_qtsd.MATRAM = tram.MATRAM');
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_tinhtrang($value)
-	{
-		$this->db->select('*');
-		$this->db->where('tinhtrang_mba.MA_TT', $value);
-		$this->db->where('chitiet_tinhtrang.TT_MOI',1);
-		$this->db->where("SUDUNG_MBA",'1');
-		$this->db->from('mba');
-		$this->db->join('chitiet_tinhtrang', 'mba.SONO = chitiet_tinhtrang.SONO');
-		$this->db->join('tinhtrang_mba', 'chitiet_tinhtrang.MA_TT = tinhtrang_mba.MA_TT');			
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
-	public function search_tinhtrang_mdv($value,$mdv)
-	{
-		$this->db->select('*');
-		$this->db->where('tinhtrang_mba.MA_TT', $value);
-		$this->db->where('mba.MA_DV',$mdv);
-		$this->db->where('chitiet_tinhtrang.TT_MOI',1);
-		$this->db->where("SUDUNG_MBA",'1');
-		$this->db->from('mba');
-		$this->db->join('chitiet_tinhtrang', 'mba.SONO = chitiet_tinhtrang.SONO');
-		$this->db->join('tinhtrang_mba', 'chitiet_tinhtrang.MA_TT = tinhtrang_mba.MA_TT');			
-		$this->db->join('loai_mba', 'mba.MA_LOAI = loai_mba.MA_LOAI');
-		$this->db->join('nhasanxuat', 'nhasanxuat.MA_HSX = mba.MA_HSX');
-		$this->db->join('donvi','mba.MA_DV = donvi.MA_DV');
-		$query = $this->db->get();
-		if ($query->num_rows()>0) {
-			return $query->result();
-		}else{
-			return false;
-		}
-	}
+	
 	
 	public function array_fill_keys($keyArray, $valueArray) {
 	    if(is_array($keyArray)) {
@@ -145,38 +11,52 @@ class Md_timkiem extends CI_Model {
 	    }
 	    return $filledArray;
 	}
+	//Output: danh sách dữ liệu
+	//Lấy dữ liệu từ bảng tinhtrang_mba
 	public function getTinhtrang(){
 		$query=$this->db->get("tinhtrang_mba");
 		return $query->result_array();
 	}
+	//Output: danh sách dữ liệu
+	// Lấy dữ liệu từ bảng mba
 	public function getSono(){
 		$query=$this->db->get("mba");
 		return $query->result_array();
 	}
+	// Input: mã đơn vị
+	// Lấy dữ liêu từ bảng mba với điều kiện mã đơn vị thỏa.
 	public function getSono_mdv($mdv){
 		$this->db->where('mba.MA_DV',$mdv);
 		$query=$this->db->get("mba");
 		return $query->result_array();
 	}
+	//Output: danh sách dữ liệu
+	//Lấy dữ liệu từ bảng donvi
 	public function getDonvi(){
 		$query=$this->db->get("donvi");
 		return $query->result_array();
 	}
+	//Input: mã đơn vị
+	//Lấy tên đơn vị từ bảng donvi khi điều kiện mã đơn vị thỏa
 	public function getDonvi_name($mdv){
 		$this->db->select('TEN_DV');
 		$this->db->where('MA_DV',$madv);
 		$query=$this->db->get("donvi");
 		return $query->result_array();
 	}
+	//Output: danh sách dữ liệu/false.
+	//Lấy dữ liệu từ bảng mba
 	public function getCongsuat()
 	{
 		$query = $this->db->get('mba');
-		if ($query->num_rows()>0) {
+		if ($query->num_rows() > 0) {
 			return $query->result_array();
 		}else{
 			return false;
 		}
 	}
+	//Output: danh sách dũ liệu/false.
+	//Lấy dữ liệu trong bảng mba khi mã đơn vị thỏa điều kiện
 	public function getCongsuat_mdv($mdv)
 	{
 		$this->db->where('mba.MA_DV',$mdv);
@@ -187,10 +67,14 @@ class Md_timkiem extends CI_Model {
 			return false;
 		}
 	}
+	//Output: danh sách dữ liệu
+	//Lấy dữ liệu từ bảng tram.
 	public function getTram(){
 		$query=$this->db->get("tram");
 		return $query->result_array();
 	}
+	//Output: danh sách dữ liệu
+	//Lấy dữ liệu từ bảng mba, chitiet_qtsd và tram khi mã đơn vị thỏa điều kiện
 	public function getTram_mdv($madv){
 		$this->db->select('*');
 		$this->db->where('mba.MA_DV', $madv);
@@ -200,7 +84,8 @@ class Md_timkiem extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-
+	// Input: số No, mã đơn vị, mã trạm, mã tình trạng, công suất
+	//chức năng tìm kiếm
 	public function search($soNO, $maDv, $maTram, $maTinhTrang, $congSuat) {
 		$this->db->select("*");
 		$this->db->from('mba');

@@ -6,6 +6,7 @@
 	<title></title>
 	<?php $this->load->view('layout/library.php'); ?>
 	<script type="text/javascript" src="<?php echo base_url();?>template/javascript/capnhatMBA_js.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$('#menu ul li a').removeClass('selected');

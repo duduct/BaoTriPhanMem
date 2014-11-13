@@ -2,7 +2,7 @@
 $stt = 0;
 foreach ($mba as $k=>$v){
     $stt=$k+1;
-    echo"<tr>";
+    echo '<tr style="cursor:pointer">';
     echo "<td>".$stt."</td>";
     echo "<td>".$v["SONO"]."</td>";
     echo "<td>".$v["TEN_DV"]."</td>";

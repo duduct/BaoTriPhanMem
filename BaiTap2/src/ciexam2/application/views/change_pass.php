@@ -13,22 +13,22 @@
       <div class="form-group">
         <label for="">Tên đăng nhập</label>
         <input type="text" class='form-control' size="20" id="username" name="username" value="<?php echo $this->session->userdata('logged_in')['username'] ?>" disabled/>
-        <?php echo form_error('username'); ?>
+        <?php echo form_error('username','<small class="text-danger help-block">','</small>'); ?>
       </div>
     <div class="form-group">
         <label for="">Mật khẩu cũ:</label>
         <input type="password" class='form-control' size="20" id="password" name="password"/>
-        <?php echo form_error('password'); ?>
+        <?php echo form_error('password','<small class="text-danger help-block">','</small>'); ?>
     </div>
     <div class="form-group">
         <label for="">Mật khẩu mới:</label>
         <input type="password" class='form-control' name="password_new" id="password_new">
-        <?php echo form_error('password_new'); ?>
+        <?php echo form_error('password_new','<small class="text-danger help-block">','</small>'); ?>
     </div>
     <div class="form-group">
         <label for="">Nhập lại mật khẩu:</label>
         <input type="password" class='form-control' name="password_config" id="password_config">
-        <?php echo form_error('password_config'); ?>
+        <?php echo form_error('password_config','<small class="text-danger help-block">','</small>'); ?>
     </div>
     <div class="form-group">
         <input type="submit" class='btn btn-block btn-primary' value="Cập nhật"/>

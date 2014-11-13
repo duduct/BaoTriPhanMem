@@ -161,8 +161,7 @@ switch(code){
       <label class="col-xs-12 col-sm-4 control-label">Năm nhập về</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <input type="number" name="namnv" type="text" size="15" id="namnv" class="form-control" min="1900" value="<?php echo set_value('namnv'); ?>">
-        <?php echo form_error('namnv','<small class="text-danger help-block">','</small
-        >'); ?> 
+        <?php echo form_error('namnv','<small class="text-danger help-block">','</small>'); ?> 
       </div>
     </div><!--End form group -->
   </div><!--End first col3-->

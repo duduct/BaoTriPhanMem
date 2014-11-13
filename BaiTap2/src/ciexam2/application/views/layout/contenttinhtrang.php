@@ -17,7 +17,7 @@ switch(code){
   <?php echo form_open('capnhat/tinhtrang', array('class' => 'form-horizontal')); ?>
   <legend> Thông tin tình trạng</legend>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <div class="form-group">
+  <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Số NO</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <select name="sono_sl" id="sono_sl" class='form-control'>
@@ -28,6 +28,29 @@ switch(code){
         </select>
       </div>
     </div><!--End form group -->
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+  <?php echo form_error('tinhtrang_tc','<small class="text-danger help-block">','</small>'); ?> 
+   <?php echo form_error('tinhtrang_tb','<small class="text-danger help-block">','</small>'); ?> 
+   <?php echo form_error('qtsd_tc','<small class="text-danger help-block">','</small>'); ?>
+   <?php echo form_error('qtsd_tb','<small class="text-danger help-block">','</small>'); ?>
+   <?php echo form_error('daitu_tc','<small class="text-danger help-block">','</small>'); ?>
+   <?php echo form_error('daitu_tb','<small class="text-danger help-block">','</small>'); ?>
+ </div>
+  <div class='clearfix'></div>
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="form-group">
+      <label class="col-xs-12 col-sm-4 control-label"></label>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <div class="checkbox">
+          <label>
+            <input name="c3" id="c3" type="checkbox" onclick="check2()" checked>
+            Tình trạng
+          </label>
+        </div>
+      </div>
+    </div><!--End form group -->
+
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Tình trạng</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
@@ -51,13 +74,14 @@ switch(code){
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Chi tiết TT</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <input type="text" name="chitiet_tt" value="" class='form-control'>
+        <input type="text" name="chitiet_tt" id="chitiet_tt" value="" class='form-control'>
+        <?php echo form_error('chitiet_tt','<small class="text-danger help-block">','</small>'); ?> 
       </div>
     </div><!--End form group -->
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Ghi chú</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <textarea name="ghichu" value="" class='form-control'></textarea>
+        <textarea name="ghichu" id="ghichu" value="" class='form-control'></textarea>
       </div>
     </div><!--End form group -->
   </div><!-- End first col 4 -->
@@ -88,7 +112,7 @@ switch(code){
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Ngày bắt đầu</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <input id="ngaybd" name="ngaybd" type="date" size="15" class='form-control'>
+        <input id="ngaybd" name="ngaybd" type="date" size="15" class='form-control' required>
       </div>
     </div><!--End form group -->
     <div class="form-group">
@@ -97,6 +121,13 @@ switch(code){
         <input name="ngaykt" id="ngaykt" type="date" size="15" class='form-control'>
       </div>
     </div><!--End form group -->
+    <input type="hidden" name='tinhtrang_tc' id='tinhtrang_tc' value='1'>
+    <input type="hidden" name='tinhtrang_tb' id='tinhtrang_tb' value='1'>
+    <input type="hidden" name='qtsd_tc' id='qtsd_tc' value='1'>
+    <input type="hidden" name='qtsd_tb' id='qtsd_tb' value='1'>
+    <input type="hidden" name='daitu_tc' id='daitu_tc' value='1'>
+    <input type="hidden" name='daitu_tb' id='daitu_tb' value='1'>
+   
   </div><!--End second col 4 -->
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <div class="form-group">
@@ -125,7 +156,7 @@ switch(code){
     <div class="form-group">
       <label class="col-xs-12 col-sm-4 control-label">Ngày đại tu</label>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-        <input name="ngay_dt" id="ngay_dt" type="date" size="15" class='form-control'>
+        <input name="ngay_dt" id="ngay_dt" type="date" size="15" class='form-control' required>
       </div>
     </div><!--End form group -->
     <div class="form-group">
@@ -140,8 +171,9 @@ switch(code){
       <input class='btn btn-default' type="reset" name="huy" value="Nhập lại">
     </div>
   </div><!--End last col 4 -->
-  <?php echo form_error('chitiet_tt','<div style="text-align:center">','</div>'); ?> 
-  <?php form_close(); ?><!--Close form-->
+  
+  <?php echo form_close(); ?><!--Close form-->
+  <div class='clearfix'></div>
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
     <form class="form-horizontal">
 

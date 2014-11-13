@@ -17,6 +17,7 @@
 				redirect('login','refresh');
 			}	
 		}
+		// Chức năng thông kế tất cả 
 		public function tatca(){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();
@@ -24,6 +25,7 @@
 			$data["title"]=array("Thống kê theo Đơn Vị","Tên đơn vị","dv");
 			$this->load->view("thongke/thongketatca",$data);
 		}
+		//Thông kê theo hãng sản xuất
 		public function tchangsanxuat(){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();
@@ -31,6 +33,7 @@
 			$data["title"]=array("Thống kê Theo Hảng Sản Xuất","Tên hảng sản xuất","hsx");
 			$this->load->view("thongke/thongketatca",$data);
 		}
+		//Thông kê theo tinh trạng
 		public function tctinhtrang(){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();
@@ -38,6 +41,7 @@
 			$data["title"]=array("Thống kê Theo Tình Trạng","Tên tình trạng","tt");
 			$this->load->view("thongke/thongketatca",$data);
 		}
+		//Thống kê theo đơn vị
 		public function tcdonvi(){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();
@@ -45,6 +49,7 @@
 			$data["title"]=array("Thống kê Đơn vị","Tên đơn vị","dv");
 			$this->load->view("thongke/thongketatca",$data);
 		}
+		//Thống kê theo công suất
 		public function tccongsuat(){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();
@@ -78,7 +83,9 @@
 				$data["title"]=array("Công suất","Công suất");
 				$this->load->view("thongke/thongkeexcel_tatca.php",$data);
 			}
-		}	
+		}
+		//Input: mã đơn vị
+		//Thống kê theo đơn vị	
 		public function donvi($value){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();
@@ -88,6 +95,7 @@
 			$data["title1"]=array("Thống kê Theo Đơn Vị","Tên đơn vị","dv");
 			$this->load->view("thongke/thongke_",$data);
 		}
+		
 		public function hangsanxuat($value){
 			$this->load->model("md_thongke");
 			$data["data_getdv"]=$this->md_thongke->get_donvi();

@@ -36,7 +36,7 @@ class Capnhat extends CI_Controller
 				
 				
 	}
-
+	// Danh sách hiển thị khi máy biến áp được chọn
 	public function capnhattinhtrangAjax() {
 		$this->load->helper(array('form', 'url'));
 		$this->load->model("md_capnhat");
@@ -57,7 +57,7 @@ class Capnhat extends CI_Controller
 		$data['ctdaitu']=$this->md_capnhat->getQuatrinhDT($_GET['sono_s3']);
 		$this->load->view("capnhat/capnhattinhtrangAjax",$data);
 	}
-
+	// Hiển thị danh sách tất cả máy biến áp của đơn vị được chọn.
 	public function capnhatmbaAjax(){
 			$this->load->model("md_capnhat");	
 			$data["loaimba"]=$this->md_capnhat->getloaimba();
@@ -206,6 +206,7 @@ class Capnhat extends CI_Controller
 						$this->index();
 						}
 }
+// Chức năng Cập nhật tình trạng máy biến áp
 public function tinhtrang(){
 		$this->load->library('form_validation');
 		$this->lang->load('vi', 'vietnamese');
@@ -227,35 +228,56 @@ public function tinhtrang(){
 						"TT_MOI"=>"0" 	);
 					$data_sd=array(
 						"QTSD_MOI"=>"0" 	);
-					$data_dt=array(
-						"DT_MOI"=>"0" 	);	
+		// Kiểm tra chức năng cập nhật có được bấm hay chưa.			
 		if($this->input->post('capnhat'))	{
-	   		$this->form_validation->set_rules('chitiet_tt','Chi tiết tình trạng ','required|callback_check_max_length_chitiet_tt|trim|xss_clean');
-			if ($this->form_validation->run() == TRUE){
-				$this->load->model("md_capnhat");
-						if($this->md_capnhat->check_date_tt($ma_tt,$so_no,$ngay_xet) == true){
-						$this->load->model('md_capnhat');
-						$this->md_capnhat->editTinhtrang($so_no,$data_tt1);
-						$this->md_capnhat->addTinhtrang($data_tt);
-						if($this->input->post('c1')==true){
-						$ma_tram=$_POST['matram'];
+			$this->load->model("md_capnhat");
+					// Kiểm tra checkbox tình trạng có đươc checjk hay không
+					if ($this->input->post('c3')==true) {
+						$this->form_validation->set_rules('chitiet_tt','Chi tiết tình trạng ','required|max_length[50]|trim|xss_clean');
+						if ($this->form_validation->run() == TRUE){
+							//Kiểm tra mã tình trạng, số no, ngày xét đã tồn tại hay chưa.
+							if($this->md_capnhat->check_date_tt($ma_tt,$so_no,$ngay_xet) == true){
+								$this->md_capnhat->editTinhtrang($so_no,$data_tt1);
+								$this->md_capnhat->addTinhtrang($data_tt);
+								$this->form_validation->set_rules('tinhtrang_tc', 'tinhtrang_tc','callback_tinhtrang_tc');
+								$this->form_validation->run();
+								
+							}else{
+								$this->form_validation->set_rules('tinhtrang_tb', 'tinhtrang_tb','callback_tinhtrang_tb');
+								$this->form_validation->run();
+							}
+						}
+					}
+					// kiểm tra checkbox quá trình sử dụng có được check hay không.
+					if($this->input->post('c1')==true){
+						$ma_tram=$this->input->post('matram');
 						$ngay_bd=$this->input->post('ngaybd');
 						$ngay_kt=$this->input->post('ngaykt');
 						$data_sd=array(
-									"SONO"=>"$so_no",
-									"MATRAM"=>"$ma_tram",
-									"NGAY_BD"=>"$ngay_bd",
-									"NGAY_KT"=>"$ngay_kt",
-									"QTSD_MOI"=>"1"
-									);
+								"SONO"=>"$so_no",
+								"MATRAM"=>"$ma_tram",
+								"NGAY_BD"=>"$ngay_bd",
+								"NGAY_KT"=>"$ngay_kt",
+								"QTSD_MOI"=>"1"
+								);
 						$data_sd1=array(
-									"QTSD_MOI"=>"0"
-									);
-						$this->md_capnhat->editTinhtrang_sd($so_no,$data_sd1);
-						$this->md_capnhat->addTinhtrang_sd($data_sd);
+								"QTSD_MOI"=>"0"
+								);
+						//Kiểm tra mã trạm, số no, ngày bắt đầu đã tồn tại hay chưa.
+						if ($this->md_capnhat->check_date_qtsd($ma_tram,$so_no,$ngay_bd)== true) {
+							$this->md_capnhat->editTinhtrang_sd($so_no,$data_sd1);
+							$this->md_capnhat->addTinhtrang_sd($data_sd);
+							$this->form_validation->set_rules('qtsd_tc', 'qtsd_tc','callback_qtsd_tc');
+							$this->form_validation->run();
+								
+						}else{
+							$this->form_validation->set_rules('qtsd_tb', 'qtsd_tb','callback_qtsd_tb');
+							$this->form_validation->run();
 						}
-						if($this->input->post('c2')==true){
-						$ma_daitu=$_POST['ma_dt'];
+					}
+					// Kiểm tra checkbox đại tu có được check hay không
+					if($this->input->post('c2')==true){
+						$ma_daitu=$this->input->post('ma_dt');
 						$ngay_dt=$this->input->post('ngay_dt');
 				    	$noidung_dt=$this->input->post('nd_daitu');
 						$data_dt1=array(
@@ -265,15 +287,24 @@ public function tinhtrang(){
 									"ND_DAITU"=>"$noidung_dt",
 									"DT_MOI"=>"1"
 									);
-						$this->md_capnhat->editTinhtrang_dt($so_no,$data_dt);
-						$this->md_capnhat->addTinhtrang_dt($data_dt1);	
-						}
-						echo "<script language=javascript> alert('Cập nhật thành công!'); </script>";
+						$data_dt=array(
+									"DT_MOI"=>"0" 	
+									);
+						//Kiểm tra mã đại tu, số no, ngày đại tuaddmba đã tồn tại hay chưa.
+						if($this->md_capnhat->check_date_dt($ma_daitu,$so_no,$ngay_dt)== true){
+							$this->md_capnhat->editTinhtrang_dt($so_no,$data_dt);
+							$this->md_capnhat->addTinhtrang_dt($data_dt1);
+							$this->form_validation->set_rules('daitu_tc', 'daitu_tc','callback_daitu_tc');
+							$this->form_validation->run();
+								
 						}else{
-							echo "<script language=javascript> alert('Mỗi ngày bạn chỉ được cập nhật một lần!'); </script>";
+							$this->form_validation->set_rules('daitu_tb', 'daitu_tb','callback_daitu_tb');
+							$this->form_validation->run();
 						}
-															}
+
+			}
 		}
+		// Kiểm tra người dùng có chọn hiển thị Xem máy biến áp?
 		if($this->input->post('chitiet_sono')){
 			$this->load->helper(array('form', 'url'));
 				$this->load->model("md_capnhat");
@@ -296,12 +327,14 @@ public function tinhtrang(){
 			}	
 		else $this->index1();				
 }
+	// Chức năng cập nhật máy biến áp
 	public function capnhatmba(){
 				$this->load->helper(array('form', 'url'));
 				$this->load->library('form_validation');
 				$this->lang->load('vi', 'vietnamese');
 				$this->form_validation->set_message('required', $this->lang->line('required'));
 				$this->form_validation->set_message('greater_than', $this->lang->line('greater_than'));
+				$this->form_validation->set_message('max_length', $this->lang->line('max_length'));
 				
 						$so_no=$this->input->post('sono');
 						$ten_mba=$this->input->post('madv');
@@ -346,14 +379,17 @@ public function tinhtrang(){
 									"TONGTRONGLUONG"=>"$tongtl_mba",
 									"SUDUNG_MBA"=>"$sudung"
 									);
+				// Kiểm tra chức năng xóa máy biến áp có được bấm không?			
 				if ($this->input->post('xoa')){
 					$this->form_validation->set_rules('sono','Số No','required|trim|xss_clean|callback_ktSNX');
-					
 					if ($this->form_validation->run() == TRUE){
 						$this->load->model('md_capnhat');
+						// Kiểm tra số NO có trong bảng chi tiết tình trạng hay không?
+						//Nếu không có trong bảng chitiet_tinhtrang thí xóa máy biến áp.
 						if($this->md_capnhat->checkSN_TT($so_no)==true){
-						$this->md_capnhat->deletemba($so_no);
-						echo "<script language=javascript> alert('Xóa thành công!'); </script>";}
+							$this->md_capnhat->deletemba($so_no);
+							echo "<script language=javascript> alert('Xóa thành công!'); </script>";}
+						// Nếu số NO có trong bảng chitiet_tinhtrang thì cập nhật trạng thái SUDUNG_MBA.	
 						else {
 							$so_no=$this->input->post('sono');
 							$sudung=0;
@@ -363,14 +399,15 @@ public function tinhtrang(){
 							$this->md_capnhat->editmba($so_no,$data_mba);
 							echo "<script language=javascript> alert('Xóa thành công!'); </script>";
 							}
-																}
-												}
+					}
+				}
+				//Kiểm tra chức năng Thêm có được bấm hay không?
 				else if($this->input->post('them'))	{
-						$this->form_validation->set_rules('sono','Số No','required|trim|xss_clean|callback_check_max_length_sono|callback_check_style|callback_ktSN');
+						$this->form_validation->set_rules('sono','Số No','required|trim|xss_clean|max_length[15]|callback_check_style|callback_ktSN');
 						
-						$this->form_validation->set_rules('quocgiasx','Quốc gia sản xuất','required|trim|xss_clean|callback_check_max_length_quocgiasx');
+						$this->form_validation->set_rules('quocgiasx','Quốc gia sản xuất','required|trim|xss_clean|max_length[20]');
 						
-						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|callback_check_max_length_congsuat|greater_than[0]');
+						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|max_length[20]|greater_than[0]');
 								
 						$this->form_validation->set_rules('dienap','Điện Áp','required|trim|xss_clean|callback_check_max_length_dienap');
 										
@@ -398,20 +435,21 @@ public function tinhtrang(){
 						
 						$this->form_validation->set_rules('thongsodo','Thông số đo','trim|xss_clean');	
 
+						//Nếu các ràng buộc trên mà thỏa thì thêm mới máy biến áp.
 						if($this->form_validation->run() == TRUE){
 							$this->load->model('md_capnhat');
 							$this->md_capnhat->addmba($data_mba);
 							echo "<script language=javascript> alert('Thêm thành công!'); </script>";	
-																 }
-													 }	
+						}
+				}	
 
-
+				// Kiểm tra chức năng cập nhật có được khởi động hay không?
 				else if($this->input->post('capnhat'))	{
 						$this->form_validation->set_rules('sono','Số No','required|trim|xss_clean|callback_ktSNX');
 						
-						$this->form_validation->set_rules('quocgiasx','Quốc gia sản xuất','required|trim|xss_clean|callback_check_max_length_quocgiasx');
+						$this->form_validation->set_rules('quocgiasx','Quốc gia sản xuất','required|trim|xss_clean|max_length[20]');
 						
-						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|callback_check_max_length_congsuat|greater_than[0]');
+						$this->form_validation->set_rules('congsuat','Công Suất','required|trim|xss_clean|max_length[20]|greater_than[0]');
 								
 						$this->form_validation->set_rules('dienap','Điện Áp','required|trim|xss_clean|callback_check_max_length_dienap');
 										
@@ -439,14 +477,15 @@ public function tinhtrang(){
 						
 						$this->form_validation->set_rules('thongsodo','Thông số đo','trim|xss_clean');	
 				   													 
-																
-						
+
+						//Nếu các ràng buộc mà thỏa thì sửa thông tin máy biến áp
 				   		if($this->form_validation->run() == TRUE){
 							$this->load->model('md_capnhat');
 							$this->md_capnhat->editmba($so_no,$data_mba);
 							echo "<script language=javascript> alert('Cập nhật thành công!'); </script>";
-																 }
-														}
+						}
+					}
+					// Chức năng hiển thị danh sách các máy biến áp của đơn vị
 					if($this->input->post('dv1'))	{
 						$this->load->model("md_capnhat");	
 						$data["loaimba"]=$this->md_capnhat->getloaimba();
@@ -460,25 +499,39 @@ public function tinhtrang(){
 						}
 					else	$this->index();
 												}
-
-		public function check_max_length_sono(){	
-				if(strlen($this->input->post('sono')) > 15)
-				{
-					$this->form_validation->set_message('check_max_length_sono', 'Trường \'%s\' không thể vượt quá  15 ký tự ');
-		    		return false;
-				}		
-				return true;
+		// Hiển thị thông báo khi cập nhật tình trạng thành công.										
+		public function tinhtrang_tc($val){
+			$this->form_validation->set_message('tinhtrang_tc', 'Cập nhật tình trạng thành công!');
+			return false;
 		}
-
-		public function check_max_length_dienap(){	
-				if(strlen($this->input->post('dienap')) > 20)
-				{
-					$this->form_validation->set_message('check_max_length_dienap', 'Trường \'%s\' không thể vượt quá  15 ký tự ');
-		    		return false;
-				}		
-				return true;
+		// Hiển thị thông báo lỗi khi cập nhật tình trạng thất bại.
+		public function tinhtrang_tb($val){
+			$this->form_validation->set_message('tinhtrang_tb', 'Xin lỗi, Bạn đã cập nhật trùng tình trạng trong hôm nay.');
+			return false;
 		}
-
+		// Hiển thị thông báo khi cập nhật quá trình sử dụng thành công.
+		public function qtsd_tc($val){
+			$this->form_validation->set_message('qtsd_tc', 'Cập nhật quá trình sử dụng thành công!');
+			return false;
+		}
+		// Hiển thị thông báo lỗi khi cập nhật quá trình sử dụng thất bại.
+		public function qtsd_tb($val){
+			$this->form_validation->set_message('qtsd_tb', 'Xin lỗi, Bạn đã cập nhật quá trình sử dụng bị trùng dữ liệu, hãy kiểm tra lại \'Số No\', \'Mã Trạm\', \'Ngày bắt đầu\'.');
+			return false;
+		}
+		// Hiển thị thông báo khi cập nhật đại tu thành công.
+		public function daitu_tc($val){
+			$this->form_validation->set_message('daitu_tc', 'Cập nhật đại tu thành công!');
+			return false;
+		}
+		// Hiển thị thông báo lỗi khi cập nhật đại tu thất bại.
+		public function daitu_tb($val){
+			$this->form_validation->set_message('daitu_tb', 'Xin lỗi, Bạn đã cập nhật đại tu bị trùng dữ liệu, hãy kiểm tra lại \'Số No\', \'Loại đại tu\', \'Ngày đại tu\'.');
+			return false;
+		}
+		//Input: số NO
+		//Output: true/false		
+		// Kiểm tra định dạng của Số NO.
 		public function check_style($val){	
 			$pattern1 = '/^[0-9]{1,15}$/'; 
 			$pattern2 = '/^[0-9]{1,12}-[0-9]{2}$/'; 
@@ -490,33 +543,9 @@ public function tinhtrang(){
 				return false;
 			}	
 		}	
-		
-		public function check_max_length_quocgiasx(){	
-			if(strlen($this->input->post('quocgiasx')) > 20)
-			{
-				$this->form_validation->set_message('check_max_length_quocgiasx', 'Trường \'%s\' không thể vượt quá  20 ký tự ');
-	    		return false;
-			}		
-			return true;
-		}
-		
-		public function check_max_length_chitiet_tt(){	
-			if(strlen($this->input->post('chitiet_tt')) > 50)
-			{
-				$this->form_validation->set_message('check_max_length_chitiet_tt', 'Trường \'%s\' không thể vượt quá  50 ký tự ');
-	    		return false;
-			}		
-			return true;
-		}
-		public function check_max_length_congsuat(){	
-			if(strlen($this->input->post('congsuat')) > 20)
-			{
-				$this->form_validation->set_message('check_max_length_quocgiasx', 'Trường \'%s\' không thể vượt quá  10 ký tự ');
-	    		return false;
-			}		
-			return true;
-		}
-
+		//Input: mã số tài sản
+		//Output: true/false
+		// Kiểm tra mã số tài sản đã tồn tại hay chưa khi thêm mới
 		public function ktMSTS($ms){
 			$this->load->model('md_capnhat');
 			if ($this->md_capnhat->checkMSTS($ms))
@@ -526,7 +555,9 @@ public function tinhtrang(){
 				return false;
 			}
 		}
-
+		//Input: mã số tài sản, số No
+		//Output: true/false.
+		// Kiểm tra mã số tài sản đã tồn tại hay chưa khi cập nhật (sửa)
 		public function ktMSTS_CapNhat($msts,$sono){
 			if (! empty($msts)) {
 					$this->load->model('md_capnhat');
@@ -541,7 +572,9 @@ public function tinhtrang(){
 			
 		}
 
-
+		//Input: năm nhập về
+		//Output: true/false.
+		//Kiểm tra năm nhập về với năm hiện tại và năm sản xuất
 		public function ktNAMNV($val){
 			$year = date("Y");
 			if($val > $year){
@@ -555,7 +588,10 @@ public function tinhtrang(){
 				}
 			}	
 			return true;
-			}	
+		}
+		//Input: số No
+		//Output: true/false.	
+		//Kiểm tra số No đã tồn tại hay chưa
 		public function ktSN($sn){
 			$this->load->model('md_capnhat');
 			if ($this->md_capnhat->checkSN($sn))
@@ -565,14 +601,17 @@ public function tinhtrang(){
 				return false;
 			}
 		}
-	public function ktSNX($sn){
-		$this->load->model('md_capnhat');
-		if ($this->md_capnhat->checkSN($sn)){
-			$this->form_validation->set_message('ktSNX', '%s \''.$this->input->post("sono"). '\' không tồn tại ');
-			return false;
-		}
-		else 
-			return true;
+		//Input: số No
+		//Output: true/false.
+		//Kiểm tra số NO đó có tồn tại hay không khi xóa
+		public function ktSNX($sn){
+			$this->load->model('md_capnhat');
+			if ($this->md_capnhat->checkSN($sn)){
+				$this->form_validation->set_message('ktSNX', '%s \''.$this->input->post("sono"). '\' không tồn tại ');
+				return false;
+			}
+			else 
+				return true;
 		}										
 
 						}

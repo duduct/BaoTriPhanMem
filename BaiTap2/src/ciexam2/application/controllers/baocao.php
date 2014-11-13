@@ -18,6 +18,7 @@ class Baocao extends CI_Controller {
 				redirect('login','refresh');
 			}	
 		}
+		// Báo cáo tất cả, được gọi khi người dùng chọn Tất cả đơn vị
 		public function tatca(){
 			$this->load->model("md_baocao");
 			$data["bc_tatca"] = $this->md_baocao->tatca();
@@ -26,6 +27,7 @@ class Baocao extends CI_Controller {
 			$data["title_tt"] = NULL;
 			$this->load->view("baocao/baocaotatca",$data);
 		}
+		// Hiển thị thông tin đơn vị được chọn tương ứng
 		public function donvi($value){
 			$this->load->model("md_baocao");
 			$data["title_bc"] = NULL;
@@ -37,6 +39,7 @@ class Baocao extends CI_Controller {
 			$data["title_tt"]=$this->md_baocao->get_tinhtrang_($value);
 			$this->load->view("baocao/baocao_",$data);
 		}
+		// Báo cáo tất cả tình trạng
 		public function tctinhtrang($value){
 			$this->load->model("md_baocao");
 			$data["bc_tatca"] = $this->md_baocao->bc_tatca_tt($value);
@@ -45,6 +48,7 @@ class Baocao extends CI_Controller {
 			$data["title_tt"]=$this->md_baocao->get_tinhtrang_($value);
 			$this->load->view("baocao/baocaotatca_tt",$data);
 		}
+		// Báo cáo tình trạng tương ứng khi được chọn
 		public function tinhtrang($value,$value1){
 			$this->load->model("md_baocao");
 			$data["data_getdv"]=$this->md_baocao->get_donvi();	

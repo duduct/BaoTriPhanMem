@@ -36,6 +36,7 @@ class Quanly extends CI_Controller {
 				redirect('login','refresh');
 			}
 	}
+	// Chức năng quản lý đơn vị
 	public function donvi(){
 		$this->lang->load('vi', 'vietnamese');
 		$this->load->helper(array('form', 'url'));
@@ -43,8 +44,11 @@ class Quanly extends CI_Controller {
 		$this->load->model('md_quanly');
 		$this->form_validation->set_message('required', $this->lang->line('required'));
 		$this->form_validation->set_message('is_unique', $this->lang->line('is_unique'));
+		$this->form_validation->set_message('max_length', $this->lang->line('max_length'));
+		// Chức năng xóa đơn vị được gọi
 		if ($this->input->post('submit')=='Xóa'){
-			$this->form_validation->set_rules('txtM_DV','lang:MaDonVi','required|trim|xss_clean||callback_check_max_length_MDV|callback_ktXoaDonvi');
+			$this->form_validation->set_rules('txtM_DV','lang:MaDonVi','required|trim|xss_clean|max_length[5]|callback_ktXoaDonvi');
+			//Nếu kiểm tra ràng buộc dữ liệu thất bại
 			if ($this->form_validation->run() == FALSE){
 				$this->index();
 			}
@@ -56,10 +60,10 @@ class Quanly extends CI_Controller {
 			}
 		}
 		else {
-			$this->form_validation->set_rules('txtM_DV','lang:MaDonVi','required|trim|xss_clean|callback_check_max_length_MDV');
-			$this->form_validation->set_rules('txtT_DV','lang:TenDonVi','required|trim|xss_clean|callback_check_max_length_TDV');
-			$this->form_validation->set_rules('txtTK','lang:TaiKhoan','required|trim|xss_clean|callback_check_max_length_TK');
-			$this->form_validation->set_rules('txtMK','lang:MatKhau','required|trim|xss_clean|callback_check_max_length_MK');
+			$this->form_validation->set_rules('txtM_DV','lang:MaDonVi','required|trim|xss_clean|max_length[5]');
+			$this->form_validation->set_rules('txtT_DV','lang:TenDonVi','required|trim|xss_clean|max_length[100]');
+			$this->form_validation->set_rules('txtTK','lang:TaiKhoan','required|trim|xss_clean|max_length[10]');
+			$this->form_validation->set_rules('txtMK','lang:MatKhau','required|trim|xss_clean|max_length[10]');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->index();
@@ -78,72 +82,45 @@ class Quanly extends CI_Controller {
 					"MATKHAU"=>"$MK",
 					"QUYEN_SD" => "$Q"
 				);
-				
+				//Chức năng sửa đơn vị được chọn
 				if ($this->input->post("submit")=="Sửa"){
 					$this->form_validation->set_rules('txtM_DV','Mã đơn vị','callback_ktMDV_sua');
 					$this->form_validation->set_rules('txtT_DV','Tên đơn vị','callback_kt_TDV_Sua['.$this->input->post('txtM_DV').']');
 					$this->form_validation->set_rules('txtTK','Tài khoản','callback_kt_TK_Sua['.$this->input->post('txtM_DV').']');
-						if ($this->form_validation->run() == FALSE){
-							$this->index();
-						}
-						else{
-							$this->md_quanly->editDonvi($M_DV,$data);
-							$this->index();
-							echo '<script>alert("Sửa thành công!");</script>';
-						}
+					//Nếu kiểm tra ràng buộc dữ liệu trên thất bại
+					if ($this->form_validation->run() == FALSE){
+						$this->index();
+					}
+					else{
+						$this->md_quanly->editDonvi($M_DV,$data);
+						$this->index();
+						echo '<script>alert("Sửa thành công!");</script>';
+					}
 				}
+				//Chức năng thêm đơn vị được chọn
 				else if ($this->input->post("submit")=="Thêm"){
-						$this->form_validation->set_rules('txtT_DV','Tên đơn vị','is_unique[donvi.TEN_DV]');
-						$this->form_validation->set_rules('txtTK','Tài khoản','is_unique[donvi.TAIKHOAN]');
-						$this->form_validation->set_rules('txtM_DV','Mã đơn vị','is_unique[donvi.MA_DV]');
-						if ($this->form_validation->run() == FALSE){
-							$this->index();
+					$this->form_validation->set_rules('txtT_DV','Tên đơn vị','is_unique[donvi.TEN_DV]');
+					$this->form_validation->set_rules('txtTK','Tài khoản','is_unique[donvi.TAIKHOAN]');
+					$this->form_validation->set_rules('txtM_DV','Mã đơn vị','is_unique[donvi.MA_DV]');
+					//Nếu kiểm tra ràng buộc dữ liệu trên thất bại
+					if ($this->form_validation->run() == FALSE){
+						$this->index();
+					}
+					else{
+						$this->md_quanly->addDonvi($data);
+						$this->index();
+						echo '<script>alert("Thêm thành công");</script>';
 						}
-						else{
-							$this->md_quanly->addDonvi($data);
-							$this->index();
-							echo '<script>alert("Thêm thành công");</script>';
-							}
-					 }
+				 }
 			}
 		}
 		$this->load->model("md_quanly");
 		$data["donvi"]=$this->md_quanly->getDonvi();
 		$this->load->view("quanly/donvi",$data);
 	}
-	public function check_max_length_MK($val){
-		if(strlen($this->input->post('txtMK')) > 10)
-		{
-			$this->form_validation->set_message('check_max_length_MK', 'Trường \'%s\' không thể vượt quá  10 ký tự ');
-    		return false;
-		}
-		return true;
-	}
-	public function check_max_length_TK($val){	
-		if(strlen($this->input->post('txtTK')) > 10)
-		{
-			$this->form_validation->set_message('check_max_length_TK', 'Trường \'%s\' không thể vượt quá  10 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
-	public function check_max_length_MDV($val){	
-		if(strlen($this->input->post('txtM_DV')) > 5)
-		{
-			$this->form_validation->set_message('check_max_length_MDV', 'Trường \'%s\' không thể vượt quá  5 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
-	public function check_max_length_TDV($val){	
-		if(strlen($this->input->post('txtT_DV')) > 100)
-		{
-			$this->form_validation->set_message('check_max_length_TDV', 'Trường \'%s\' không thể vượt quá  100 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
-	
+	// input: mã đơn vị
+	// Output: true/false
+	// Kiểm tra mã đơn vị khi sửa. 
 	public function ktMDV_sua($str){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->checkDonvi($str))
@@ -153,7 +130,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
-
+	// input: mã đơn vị, tên đơn vị
+	// Output: true/false
+	// Kiểm tra tên đơn vị khi sửa
 	public function kt_TDV_Sua($tdv, $mdv){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->kt_TDV_Sua($tdv, $mdv))
@@ -163,7 +142,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
-
+	// input: mã đơn vị, tài khoản
+	// Output: true/false
+	// Kiểm tra tài khoản trước khi sửa
 	public function kt_TK_Sua($tk, $mdv){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->kt_TK_Sua($tk, $mdv))
@@ -173,6 +154,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
+	// input: mã đơn vị
+	// Output: true/false
+	//Kiểm tra đơn vị lúc xóa... kiểm tra xem đơn vị này có dữ liệu nào tham chiếu tới không.
 	public function ktXoaDonvi($str){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->checkXoaDonvi($str))
@@ -183,14 +167,17 @@ class Quanly extends CI_Controller {
 		}
 	}
 	/***********TRAM************/
+	// Chức năng quản lý trạm
 	public function tram(){
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		$this->lang->load('vi', 'vietnamese');
 		$this->form_validation->set_message('required', $this->lang->line('required'));
 		$this->form_validation->set_message('is_unique', $this->lang->line('is_unique'));
+		$this->form_validation->set_message('max_length', $this->lang->line('max_length'));
+		//Chức năng xóa trạm được chọn
 		if ($this->input->post('submit')=='Xóa'){
-			$this->form_validation->set_rules('txtM_Tr','lang:MaTram','required|trim|xss_clean|callback_ktXoaTram|callback_check_max_length_MT');
+			$this->form_validation->set_rules('txtM_Tr','lang:MaTram','required|trim|xss_clean|callback_ktXoaTram|max_length[20]');
 			if ($this->form_validation->run() == FALSE){
 				$this->index();
 			}
@@ -202,9 +189,9 @@ class Quanly extends CI_Controller {
 			}
 		}
 		else {
-			$this->form_validation->set_rules('txtM_Tr','lang:MaTram','required|trim|xss_clean|callback_check_max_length_MT');
-			$this->form_validation->set_rules('txtT_Tr','lang:TenTram','required|trim|xss_clean|callback_check_max_length_TT');
-			$this->form_validation->set_rules('txtDC_Tr','lang:DiaChiTram','required|trim|xss_clean|callback_check_max_length_DCT');
+			$this->form_validation->set_rules('txtM_Tr','lang:MaTram','required|trim|xss_clean|max_length[20]');
+			$this->form_validation->set_rules('txtT_Tr','lang:TenTram','required|trim|xss_clean|max_length[50]');
+			$this->form_validation->set_rules('txtDC_Tr','lang:DiaChiTram','required|trim|xss_clean|max_length[100]');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->index();
@@ -250,8 +237,9 @@ class Quanly extends CI_Controller {
 		$data["tram"]=$this->md_quanly->getTram();
 		$this->load->view("quanly/tram",$data);
 	}
-
-
+	// Input: tên trạm, mã trạm
+	// Output: true/false
+	// Kiểm tra tên trạm đã tôn tại hay không. Khi khởi động chức năng sửa.
 	public function kt_TenTram_Sua($tenTram, $maTram){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->kt_TenTram_Sua($tenTram, $maTram))
@@ -261,32 +249,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
-
-
-	public function check_max_length_MT($val){	
-		if(strlen($this->input->post('txtM_Tr')) > 20)
-		{
-			$this->form_validation->set_message('check_max_length_MT', 'Trường \'%s\' không thể vượt quá  20 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
-	public function check_max_length_TT($val){	
-		if(strlen($this->input->post('txtT_Tr')) > 50)
-		{
-			$this->form_validation->set_message('check_max_length_TT', 'Trường \'%s\' không thể vượt quá  50 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
-	public function check_max_length_DCT($val){	
-		if(strlen($this->input->post('txtDC_Tr')) > 100)
-		{
-			$this->form_validation->set_message('check_max_length_DCT', 'Trường \'%s\' không thể vượt quá  100 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
+	// Input: mã trạm
+	// Output: true/false
+	//Kiểm tra mã trạm đã tồn tại hay chưa khi thêm mới.
 	public function ktMTr($str){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->checkTram($str))
@@ -296,6 +261,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
+	// Input: mã trạm
+	// Output: true/false
+	// Kiểm tra mã trạm đúng hay không, khi sửa thông tin trạm.
 	public function ktMTr_sua($str){
 		$this->load->model('md_quanly');
 		if (!$this->md_quanly->checkTram($str))
@@ -305,6 +273,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
+	// Input: mã trạm
+	// Output: true/false
+	// Kiểm tra thông tin trạm đó có là dữ liệu cơ sở hay không, có dữ liệu khác tham chiếu đến hay không.
 	public function ktXoaTram($str){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->checkXoaTram($str))
@@ -315,14 +286,17 @@ class Quanly extends CI_Controller {
 		}
 	}
 	/********HANG SAN XUAT**********/
+	// Chức năng quản lý hãng sản xuất
 	public function hangsanxuat(){
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		$this->lang->load('vi', 'vietnamese');
 		$this->form_validation->set_message('required', $this->lang->line('required'));
-			$this->form_validation->set_message('is_unique', $this->lang->line('is_unique'));
+		$this->form_validation->set_message('is_unique', $this->lang->line('is_unique'));
+		$this->form_validation->set_message('max_length', $this->lang->line('max_length'));
+
 		if ($this->input->post('submit')=='Xóa'){
-			$this->form_validation->set_rules('txtM_Hsx','lang:MaHangSanXuat','required|trim|xss_clean|callback_ktXoaHsx|callback_check_max_length_MA');
+			$this->form_validation->set_rules('txtM_Hsx','lang:MaHangSanXuat','required|trim|xss_clean|callback_ktXoaHsx|max_length[5]');
 			if ($this->form_validation->run() == FALSE){
 				$this->index();
 			}
@@ -334,8 +308,8 @@ class Quanly extends CI_Controller {
 			}
 		}
 		else {
-			$this->form_validation->set_rules('txtM_Hsx','lang:MaHangSanXuat','required|trim|xss_clean|callback_check_max_length_MA');
-			$this->form_validation->set_rules('txtT_Hsx','lang:TenHangSanXuat','required|trim|xss_clean|callback_check_max_length_TEN');
+			$this->form_validation->set_rules('txtM_Hsx','lang:MaHangSanXuat','required|trim|xss_clean|max_length[5]');
+			$this->form_validation->set_rules('txtT_Hsx','lang:TenHangSanXuat','required|trim|xss_clean|max_length[100]');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->index();
@@ -379,22 +353,9 @@ class Quanly extends CI_Controller {
 		$data["nsx"]=$this->md_quanly->getHangsanxuat();
 		$this->load->view('quanly/hangsanxuat', $data, FALSE);
 	}
-	public function check_max_length_MA($val){	
-		if(strlen($this->input->post('txtM_Hsx')) > 5)
-		{
-			$this->form_validation->set_message('check_max_length_MA', 'Trường \'%s\' không thể vượt quá  5 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
-	public function check_max_length_TEN($val){	
-		if(strlen($this->input->post('txtT_Hsx')) > 100)
-		{
-			$this->form_validation->set_message('check_max_length_TEN', 'Trường \'%s\' không thể vượt quá  100 ký tự ');
-    		return false;
-		}		
-		return true;
-	}
+	// Input: mã hãng sản xuất
+	// Output: true/false
+	// Kiểm tra hãng sản xuất đó đã tồn tại hay chưa khi thêm mới
 	public function ktMHsx($str){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->checkHangsanxuat($str))
@@ -404,7 +365,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
-	
+	// Input: mã hãng sản xuất, tên hãng sản xuất
+	// Output: true/false
+	// Kiểm tra hãng sản xuất đó đã tồn tại hay chưa khi sửa
 	public function ktTHsx_sua($ten, $ma){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->ktTHsx_sua($ten, $ma))
@@ -414,8 +377,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
-
-
+	// Input: mã hãng sản xuất
+	// Output: true/false
+	// Kiểm tra mã hãng sản xuất có tồn tại hay không, khi sửa 
 	public function ktMHsx_sua($str){
 		$this->load->model('md_quanly');
 		if (!$this->md_quanly->checkHangsanxuat($str))
@@ -425,6 +389,9 @@ class Quanly extends CI_Controller {
 			return false;
 		}
 	}
+	// Input: mã hãng sản xuất
+	// Output: true/false
+	// Kiểm tra hãng sản xuất đó có là dữ liệu cơ sở hay không, có dữ liệu nào tham chiếu đến hay không.
 	public function ktXoaHsx($str){
 		$this->load->model('md_quanly');
 		if ($this->md_quanly->checkXoaHangsanxuat($str))

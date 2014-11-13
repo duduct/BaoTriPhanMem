@@ -19,10 +19,10 @@ class Users extends CI_Model {
 
 	function login_check($username)
 	 {
-	  $this -> db -> select('TEN_DV');
-	  $this -> db -> from('donvi');
-	  $this -> db -> where('MA_DV = ' . "'" . $username . "'");
-	  $this -> db -> limit(1);
+	  $this->db->select('TEN_DV');
+	  $this->db->from('donvi');
+	  $this->db->where('MA_DV',$username);
+	  $this->db->limit(1);
 
 	  $query = $this -> db -> get();
 
@@ -32,6 +32,10 @@ class Users extends CI_Model {
 	  } else
 	   return false;
 	 }
+
+	// Input: password mới
+	// Output: true/false
+	// Đổi password 
 	function Change_password($pass_new){
 		$data = array(
             'MATKHAU' => md5($pass_new)
@@ -45,7 +49,9 @@ class Users extends CI_Model {
         }
  		  return false;
     }
-
+    //Input: mật khẩu cũ
+    //Output: true/false
+    //Kiểm tra mật khẩu cũ có khớp với trong cơ sở dữ liệu hay không?
     public function check_MK($pass_old){
         $this->db->where('TAIKHOAN',$this->session->userdata('logged_in')['username']);
         $this->db->where('MATKHAU',md5($pass_old));

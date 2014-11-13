@@ -45,6 +45,35 @@ function check()
 	document.getElementById('ngaykt').disabled=true;
 		}
 }
+
+function check1()
+{	
+	if(document.getElementById('c2').checked==true) {
+		document.getElementById('ma_dt').disabled=false;
+		document.getElementById('ngay_dt').disabled=false;
+		document.getElementById('nd_daitu').disabled=false;
+		}
+	else {
+		document.getElementById('ma_dt').disabled=true;
+	document.getElementById('ngay_dt').disabled=true;
+	document.getElementById('nd_daitu').disabled=true;
+		}
+}
+function check2()
+{	
+	if(document.getElementById('c3').checked==true) {
+		document.getElementById('matt').disabled=false;
+		document.getElementById('chitiet_tt').disabled=false;
+		document.getElementById('ghichu').disabled=false;
+		}
+	else {
+		document.getElementById('matt').disabled=true;
+		document.getElementById('chitiet_tt').disabled=true;
+		document.getElementById('ghichu').disabled=true;
+		}
+		
+}
+
 // function kiemtra()
 // { 	
 // 	var pattern1 = /^[A-Z]*[a-z]*$/; 
@@ -105,16 +134,4 @@ function check()
 // 		return false;
 // 	}
 // }
-function check1()
-{	
-	if(document.getElementById('c2').checked==true) {
-		document.getElementById('ma_dt').disabled=false;
-		document.getElementById('ngay_dt').disabled=false;
-		document.getElementById('nd_daitu').disabled=false;
-		}
-	else {
-		document.getElementById('ma_dt').disabled=true;
-	document.getElementById('ngay_dt').disabled=true;
-	document.getElementById('nd_daitu').disabled=true;
-		}
-}
+

@@ -47,9 +47,16 @@
 				<li class='dropdown'>
 					<a href="" class="dropdown-toggle" data-toggle="dropdown">Quản lý <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="<?php echo base_url(); ?>quanly/donvi">Đơn vị</a></li>
-						<li><a href="<?php echo base_url(); ?>quanly/tram">Trạm</a></li>
-						<li><a href="<?php echo base_url(); ?>quanly/hangsanxuat">Hãng sản xuất</a></li>
+						<?php
+      					$code = $this->session->userdata('logged_in')['code'];
+      					if($code == 1){
+      						echo "<li><a href='".base_url()."quanly/donvi'>Đơn vị</a></li>";
+      					}
+						if($code < 3){
+							echo "<li><a href='".base_url()."quanly/tram'>Trạm</a></li>";
+							echo "<li><a href='".base_url()."quanly/hangsanxuat'>Hãng sản xuất</a></li>";
+						}
+						?>
 					</ul>
 				</li>
 				<li class="dropdown">
